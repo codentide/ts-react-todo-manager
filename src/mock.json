@@ -1,0 +1,7 @@
+[
+  { "id": "1", "title": "Hacer la tarea", "completed": false },
+  { "id": "2", "title": "Compra comida", "completed": false },
+  { "id": "3", "title": "Componer un hit", "completed": false },
+  { "id": "4", "title": "Dar un concierto", "completed": false },
+  { "id": "5", "title": "Ganar un millón de dólares", "completed": false }
+]

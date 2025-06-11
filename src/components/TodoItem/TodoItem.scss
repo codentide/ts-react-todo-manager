@@ -1,0 +1,73 @@
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+
+  padding: 1rem 0;
+
+  width: 300px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  gap: 0.8rem;
+
+  background-color: hsla(0, 0%, 48%, 0.2);
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.2rem;
+
+  &__label,
+  &__edit {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    height: 24px;
+    padding: 0 0.4rem;
+    border: none;
+
+    font-family: system-ui;
+    font-size: 1rem;
+    font-weight: 300;
+    line-height: 1;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__label {
+    user-select: none;
+  }
+
+  &__edit {
+    padding-bottom: 0.1rem;
+    border-radius: 0.2rem;
+
+    background-color: hsl(0, 0%, 0%, 0.2);
+  }
+
+  &__checkbox {
+  }
+
+  &__remove-btn {
+    display: grid;
+    place-items: center;
+
+    aspect-ratio: 1;
+    width: 1rem;
+
+    border: none;
+    border-radius: 0.2rem;
+
+    background-color: lightcoral;
+    color: rgb(69, 17, 17);
+
+    margin-left: auto;
+
+    cursor: pointer;
+  }
+}
