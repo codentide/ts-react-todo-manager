@@ -10,8 +10,9 @@
 - [x] Añadir forma de borrar todos los TODOs completados
 - [x] Crear Header con input (Header)
 - [x] Crear un TODO (Header)
-- [ ] Añadir estilos del Todo
 - [x] Poder editar el texto de un TODO (Doble click)
+- [x] Añadir persistencia con localStorage
+- [ ] Añadir estilos del Todo
 - [ ] Añadir animaciones con AutoAnimate
 - [ ] Pasar a Reducer
 - [ ] Sincronizar con el backend

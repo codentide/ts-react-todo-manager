@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import todoListMock from '../mock.json'
+import { useState, type ReactNode } from 'react'
+// import todoListMock from '../mock.json'
 import type {
   Todo,
   TodoCompleted,
@@ -10,15 +10,16 @@ import type {
 } from '../types'
 import { TodoContext } from './todo.context'
 import { TODO_FILTERS } from '../constants'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 
 interface TodoProviderProps {
-  children: React.JSX.Element | React.JSX.Element[]
+  children: ReactNode | ReactNode[]
 }
 
-export const TodoProvider = ({ children }: TodoProviderProps) => {
-  // Todos state
-  const [todoList, setTodoList] = useState<TodoList>(todoListMock)
-  // Filter state
+export const TodoProvider: React.FunctionComponent<TodoProviderProps> = ({
+  children,
+}) => {
+  const [todoList, setTodoList] = useLocalStorage<TodoList>('todos', [])
   const [todoFilter, setTodoFilter] = useState<TodoFilter>('all')
 
   // Filter updater

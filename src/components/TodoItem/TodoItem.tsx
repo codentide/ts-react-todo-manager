@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import { useTodoContext } from '../../hooks/useTodoContext'
 import type { TodoCompleted, TodoId, TodoTitle } from '../../types'
 import './TodoItem.scss'
@@ -14,19 +14,18 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   title,
   completed,
 }) => {
-  // Funciones para interactuar con el estado global
   const { removeTodo, checkTodo, updateTodo } = useTodoContext()
-  // Estado para activar el modo edicion
   const [isEditing, setIsEditing] = useState<boolean>(false)
-  // Valor para controlar el input
   const [inputValue, setInputValue] = useState<string>(title)
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const handleTodoRemove = () => removeTodo(id)
   const handleTodoCheck = () => checkTodo(id, !completed)
   const handleDoubleClick = () => setIsEditing(true)
   const handleUpdateTodo = (title: TodoTitle) => updateTodo(id, title)
-  const handleBlur = () => setIsEditing(false)
+  const handleBlur = () => {
+    setIsEditing(false)
+    setInputValue(title)
+  }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     const key = event.key.toLowerCase()
@@ -40,15 +39,12 @@ export const Todoitem: React.FunctionComponent<Props> = ({
       input.blur()
     }
   }
+
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const input = event.target as HTMLInputElement
     const { value } = input
     setInputValue(value)
   }
-
-  useEffect(() => {
-    if (isEditing && inputRef.current) inputRef.current.focus()
-  }, [isEditing])
 
   return (
     <div className="todo-item">
@@ -64,11 +60,11 @@ export const Todoitem: React.FunctionComponent<Props> = ({
         <input
           className="todo-item__edit"
           type="text"
-          ref={inputRef}
           value={inputValue}
           onBlur={handleBlur}
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
+          autoFocus
         />
       ) : (
         <label className="todo-item__label" onDoubleClick={handleDoubleClick}>
