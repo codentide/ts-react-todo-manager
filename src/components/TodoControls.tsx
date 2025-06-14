@@ -24,8 +24,8 @@ export const TodoControls: React.FunctionComponent = () => {
   }`
 
   return (
-    <footer className="todo-controls">
-      <span className={pendingCountClass}>{pendingTodoCount} left</span>
+    <section className="todo-controls">
+      <span className={pendingCountClass}>{pendingTodoCount} Item left</span>
 
       <div className="filter-container">
         {TODO_FILTER_BUTTON_ARRAY.map(([key, literal]) => (
@@ -43,6 +43,6 @@ export const TodoControls: React.FunctionComponent = () => {
       >
         Clear done
       </button>
-    </footer>
+    </section>
   )
 }

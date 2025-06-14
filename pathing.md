@@ -12,7 +12,8 @@
 - [x] Crear un TODO (Header)
 - [x] Poder editar el texto de un TODO (Doble click)
 - [x] Añadir persistencia con localStorage
-- [ ] Añadir estilos del Todo
+- [x] Añadir estilos del Todo
+- [ ] Cambiar la posicion de los tasks
 - [ ] Añadir animaciones con AutoAnimate
 - [ ] Pasar a Reducer
 - [ ] Sincronizar con el backend

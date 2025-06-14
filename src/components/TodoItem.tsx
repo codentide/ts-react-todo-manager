@@ -3,6 +3,8 @@ import { useTodoContext } from '../hooks/useTodoContext'
 import type { TodoCompleted, TodoId, TodoTitle } from '../types'
 // import './TodoItem.scss'
 
+import CrossSVG from '../assets/svg/small-cross.svg?react'
+
 interface Props {
   id: TodoId
   title: TodoTitle
@@ -17,12 +19,14 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   const { removeTodo, checkTodo, updateTodo } = useTodoContext()
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>(title)
+  const [inputError, setInputError] = useState<string | null>(null)
 
   const handleTodoRemove = () => removeTodo(id)
   const handleTodoCheck = () => checkTodo(id, !completed)
   const handleDoubleClick = () => setIsEditing(true)
   const handleUpdateTodo = (title: TodoTitle) => updateTodo(id, title)
   const handleBlur = () => {
+    setInputError(null)
     setInputValue(title)
     setIsEditing(false)
   }
@@ -33,20 +37,43 @@ export const Todoitem: React.FunctionComponent<Props> = ({
 
     if (key === 'escape') {
       input.blur()
-    } else if (key === 'enter') {
+    }
+
+    if (key === 'enter') {
+      if (inputError) return
+
       handleUpdateTodo(inputValue)
       setIsEditing(false)
     }
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setInputError(null)
+
     const input = event.target as HTMLInputElement
-    const { value } = input
-    setInputValue(value)
+    const value = input.value
+
+    if (value.length < 3) {
+      setInputError('Type at least 3 characters')
+    }
+
+    if (value.trim() === '') {
+      setInputError('The field cannot be empty')
+      setInputValue('')
+      return
+    }
+
+    // No permite mas de un espacio entre palabras
+    const cleanedValue = value.replace(/\s{2,}/g, ' ')
+
+    setInputValue(cleanedValue)
   }
 
+  const isEditClass = isEditing ? 'editing' : ''
+  const hasErrorClass = inputError ? 'error' : ''
+
   return (
-    <div className={`todo-item ${isEditing ? 'editing' : ''}`}>
+    <div className={`todo-item ${isEditClass} ${hasErrorClass}`}>
       <input
         className="todo-item__checkbox"
         data-id={id}
@@ -70,13 +97,14 @@ export const Todoitem: React.FunctionComponent<Props> = ({
           {title}
         </label>
       )}
-
       {!isEditing && (
         // [ ] reemplazar por svg
         <button className="todo-item__remove-button" onClick={handleTodoRemove}>
-          ×
+          <CrossSVG />
         </button>
       )}
+
+      {inputError && <span className="error-message">{inputError}</span>}
     </div>
   )
 }

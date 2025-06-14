@@ -8,15 +8,23 @@
   width: 100%;
   height: fit-content;
 
-  // padding: 0.6rem;
   border-radius: 0.2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.6rem;
 
   background-color: $color-neutral-1200;
   outline: 1px solid transparent;
   outline-offset: 0px;
 
   transition: outline 0.4s ease, outline-offset 0.4s ease;
+
+  &.error {
+    // background-color: $color-error;
+
+    &:focus-within {
+      outline-color: $text-error;
+      // outline-offset: 3px;
+    }
+  }
 
   &:focus-within {
     outline-color: $color-primary-600;
