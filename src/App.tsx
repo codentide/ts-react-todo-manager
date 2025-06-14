@@ -1,13 +1,17 @@
-import { TodoControls, TodoList, TodoCreate } from './components'
+import {
+  TodoControls,
+  TodoList,
+  TodoCreate,
+  Header,
+  DailyQuote,
+} from './components'
 
 const App = () => (
   <>
-    <header>{/* nombre de app y de author, enlaces  */}</header>
-    <section className="hero">
-      {/* img brackgrouns */}
-      <h1>React/TS To-do Manager</h1>
-    </section>
+    <Header />
+    <section className="hero">{/* img brackgrouns */}</section>
     <main className="todo-container">
+      <DailyQuote />
       <TodoCreate />
       <TodoList />
       <TodoControls />

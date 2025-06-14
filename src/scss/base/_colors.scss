@@ -1,45 +1,44 @@
 $hue-primary: 216;
 
-$color-primary-100: hsl($hue-primary, 39%, 80%);
-$color-primary-200: hsl($hue-primary, 39%, 72%);
-$color-primary-300: hsl($hue-primary, 39%, 64%);
-$color-primary-400: hsl($hue-primary, 39%, 56%);
-$color-primary-500: hsl($hue-primary, 39%, 48%);
-$color-primary-600: hsl($hue-primary, 39%, 40%);
-$color-primary-700: hsl($hue-primary, 39%, 32%);
-$color-primary-800: hsl($hue-primary, 39%, 24%);
-$color-primary-900: hsl($hue-primary, 39%, 16%);
+$color-primary-100: hsl($hue-primary, 100%, 96%);
+$color-primary-200: hsl($hue-primary, 100%, 88%);
+$color-primary-300: hsl($hue-primary, 88%, 80%);
+$color-primary-400: hsl($hue-primary, 88%, 72%);
+$color-primary-500: hsl($hue-primary, 72%, 64%);
+$color-primary-600: hsl($hue-primary, 72%, 56%);
+$color-primary-700: hsl($hue-primary, 40%, 48%);
+$color-primary-800: hsl($hue-primary, 40%, 40%);
 
 // --- Colores Secundarios (Basados en un Azul) ---
-$hue-secondary: 216;
+// $hue-primary: 216;
 
-$color-secondary-100: hsl($hue-secondary, 80%, 94%);
-$color-secondary-200: hsl($hue-secondary, 80%, 88%);
-$color-secondary-300: hsl($hue-secondary, 80%, 81%);
-$color-secondary-400: hsl($hue-secondary, 80%, 73%);
-$color-secondary-500: hsl($hue-secondary, 80%, 66%);
-$color-secondary-600: hsl($hue-secondary, 80%, 60%);
-$color-secondary-700: hsl($hue-secondary, 80%, 55%);
-$color-secondary-800: hsl($hue-secondary, 80%, 47%);
-$color-secondary-900: hsl($hue-secondary, 80%, 39%);
+// $color-primary-100: hsl($hue-primary, 80%, 94%);
+// $color-primary-200: hsl($hue-primary, 80%, 88%);
+// $color-primary-300: hsl($hue-primary, 80%, 81%);
+// $color-primary-400: hsl($hue-primary, 80%, 73%);
+// $color-primary-500: hsl($hue-primary, 80%, 66%);
+// $color-primary-600: hsl($hue-primary, 80%, 60%);
+// $color-primary-700: hsl($hue-primary, 80%, 55%);
+// $color-primary-800: hsl($hue-primary, 80%, 47%);
+// $color-primary-900: hsl($hue-primary, 80%, 39%);
 
 // --- Colores Neutrales (Grises, Blanco y Negro) ---
-$color-neutral-100: hsl($hue-primary, 12%, 100%);
-$color-neutral-200: hsl($hue-primary, 12%, 92%);
-$color-neutral-300: hsl($hue-primary, 12%, 88%);
-$color-neutral-400: hsl($hue-primary, 12%, 80%);
-$color-neutral-500: hsl($hue-primary, 12%, 72%);
-$color-neutral-600: hsl($hue-primary, 12%, 64%);
-$color-neutral-700: hsl($hue-primary, 12%, 56%);
-$color-neutral-800: hsl($hue-primary, 12%, 48%);
-$color-neutral-900: hsl($hue-primary, 12%, 40%);
-$color-neutral-1000: hsl($hue-primary, 12%, 32%);
-$color-neutral-1100: hsl($hue-primary, 12%, 24%);
-$color-neutral-1150: hsl($hue-primary, 12%, 20%);
-$color-neutral-1200: hsl($hue-primary, 12%, 16%);
-$color-neutral-1250: hsl($hue-primary, 12%, 12%);
-$color-neutral-1300: hsl($hue-primary, 12%, 8%);
-$color-neutral-1400: hsl($hue-primary, 12%, 0%);
+$color-neutral-100: hsl($hue-primary, 20%, 100%);
+$color-neutral-200: hsl($hue-primary, 20%, 92%);
+$color-neutral-300: hsl($hue-primary, 20%, 88%);
+$color-neutral-400: hsl($hue-primary, 20%, 80%);
+$color-neutral-500: hsl($hue-primary, 20%, 72%);
+$color-neutral-600: hsl($hue-primary, 20%, 64%);
+$color-neutral-700: hsl($hue-primary, 20%, 56%);
+$color-neutral-800: hsl($hue-primary, 20%, 48%);
+$color-neutral-900: hsl($hue-primary, 20%, 40%);
+$color-neutral-1000: hsl($hue-primary, 20%, 32%);
+$color-neutral-1100: hsl($hue-primary, 20%, 24%);
+$color-neutral-1150: hsl($hue-primary, 20%, 20%);
+$color-neutral-1200: hsl($hue-primary, 20%, 16%);
+$color-neutral-1250: hsl($hue-primary, 20%, 12%);
+$color-neutral-1300: hsl($hue-primary, 20%, 8%);
+$color-neutral-1400: hsl($hue-primary, 20%, 0%);
 
 // --- Colores de Estado ---
 $color-success: hsl(120, 60%, 45%);

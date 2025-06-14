@@ -13,5 +13,23 @@ export const TodoList: React.FunctionComponent = () => {
     ))
   }
 
-  return <ul className="todo-list">{renderTodos(todoList)}</ul>
+  return (
+    <ul className="todo-list">
+      {todoList.length > 0 ? (
+        renderTodos(todoList)
+      ) : (
+        <div
+        // style={{
+        //   display: 'flex',
+        //   flexDirection: 'column',
+        //   alignItems: 'center',
+        //   justifyContent: 'center',
+        //   padding: '1rem',
+        // }}
+        >
+          {/* <span>Es hora de hacer algo brillante</span> */}
+        </div>
+      )}
+    </ul>
+  )
 }

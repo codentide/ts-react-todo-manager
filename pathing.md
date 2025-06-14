@@ -17,3 +17,4 @@
 - [ ] Añadir animaciones con AutoAnimate
 - [ ] Pasar a Reducer
 - [ ] Sincronizar con el backend
+- [ ] Añadir citas aleatorioas diarias con el API [Zenquotes](https://zenquotes.io/)

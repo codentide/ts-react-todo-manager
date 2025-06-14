@@ -19,13 +19,15 @@ export const TodoControls: React.FunctionComponent = () => {
   const deleteDoneButtonClass = `todo-controls__delete-done-button  ${
     completedTodoCount > 0 ? 'active' : ''
   }`
-  const pendingCountClass = `todo-controls__pending-count ${
-    pendingTodoCount > 0 ? 'active' : ''
-  }`
+  // const pendingCountClass = `todo-controls__pending-count ${
+  //   pendingTodoCount > 0 ? 'active' : ''
+  // }`
 
   return (
     <section className="todo-controls">
-      <span className={pendingCountClass}>{pendingTodoCount} Item left</span>
+      <span className="todo-controls__pending-count">
+        {pendingTodoCount} Item left
+      </span>
 
       <div className="filter-container">
         {TODO_FILTER_BUTTON_ARRAY.map(([key, literal]) => (
