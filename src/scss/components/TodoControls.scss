@@ -1,0 +1,89 @@
+@use '../base/colors' as *;
+@use '../base/typography' as *;
+
+.todo-controls {
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0 0 0.2rem 0.2rem;
+
+  background-color: $color-neutral-1200;
+
+  &__pending-count {
+    width: 82px;
+    padding-left: 0.2rem;
+
+    font-size: 0.88rem;
+    font-weight: 400;
+    white-space: nowrap;
+
+    opacity: 0;
+
+    color: $color-neutral-900;
+    transition: opacity 0.2s ease;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .filter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+
+    width: 100%;
+
+    &__filter-button {
+      padding: 0.32rem 0.8rem;
+      border-radius: 0.2rem;
+      border: none;
+
+      font-size: 0.8rem;
+
+      color: $color-neutral-500;
+      background-color: $color-neutral-1200;
+
+      filter: brightness(0.8);
+      cursor: pointer;
+
+      transition: all 0.4s ease;
+
+      &.active {
+        color: $color-neutral-100;
+        background-color: $color-primary-600;
+        filter: brightness(1) saturate(2);
+      }
+    }
+  }
+
+  &__delete-done-button {
+    width: 82px;
+
+    padding: 0.32rem 0.6rem;
+    border-radius: 0.2rem;
+    border: none;
+
+    font-size: 0.8rem;
+    white-space: nowrap;
+
+    opacity: 0;
+    pointer-events: none;
+    filter: brightness(0.8);
+    cursor: pointer;
+
+    color: $color-neutral-700;
+    background-color: $color-neutral-1200;
+
+    transition: opacity 0.2s ease;
+
+    &.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}

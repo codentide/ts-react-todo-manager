@@ -1,6 +1,5 @@
-import { useTodoContext } from '../../hooks/useTodoContext'
-import type { TodoFilter } from '../../types'
-import './FilterButton.scss'
+import { useTodoContext } from '../hooks/useTodoContext'
+import type { TodoFilter } from '../types'
 
 interface Props {
   filterValue: TodoFilter
@@ -16,7 +15,7 @@ export const FilterButton: React.FunctionComponent<Props> = ({
 
   return (
     <button
-      className={`filter-box__filter ${className}`}
+      className={`filter-container__filter-button ${className}`}
       onClick={() => updateFilter(filterValue)}
     >
       {label}

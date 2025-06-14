@@ -1,0 +1,43 @@
+@use './base/colors' as *;
+@use './base/typography' as *;
+
+// components
+@use './components/TodoCreate.scss' as *;
+@use './components/TodoList.scss' as *;
+@use './components//TodoControls.scss' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  font-family: $font-primary;
+  color-scheme: light dark;
+  accent-color: hsl($hue-primary, 80%, 50%);
+
+  width: 100%;
+  min-height: 100dvh;
+
+  background-color: $color-neutral-1300;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-container {
+  display: flex;
+  flex-direction: column;
+  // gap: 1rem;
+
+  max-width: 520px;
+
+  margin: 4rem auto;
+
+  filter: drop-shadow(0 0.4rem 1rem hsl(0, 0%, 0%, 0.2));
+  // background-color: $color-neutral-1200;
+}

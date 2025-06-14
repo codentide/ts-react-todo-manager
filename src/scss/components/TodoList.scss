@@ -1,0 +1,122 @@
+@use '../base/colors' as *;
+@use '../base/typography' as *;
+
+.todo-list:not(:has(li)) + .todo-controls {
+  border-radius: 0.2rem;
+}
+
+.todo-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  width: 100%;
+
+  list-style: none;
+
+  li {
+    .todo-item {
+      display: flex;
+      align-items: center;
+
+      width: 100%;
+      padding: 0 1rem;
+      border-bottom: 1px solid $color-neutral-1150;
+
+      background-color: $color-neutral-1200;
+      transition: background-color 0.4s ease;
+
+      &:hover {
+        background-color: $color-neutral-1150;
+      }
+
+      &.editing {
+        background-color: $color-neutral-1250;
+        outline: none;
+      }
+
+      // [ ] Crear un custom checkbox
+
+      &__checkbox {
+        aspect-ratio: 1;
+        width: 1rem;
+        cursor: pointer;
+
+        &:checked + label {
+          text-decoration: line-through;
+          color: $color-neutral-1000;
+        }
+      }
+
+      &__label {
+        width: 100%;
+        padding: 1rem;
+
+        font-family: $font-primary;
+        font-size: 1rem;
+        font-weight: 300;
+
+        color: $color-neutral-500;
+        transition: all 0.4s ease;
+
+        user-select: none;
+      }
+
+      &__input-edit {
+        width: 100%;
+        padding: 1rem;
+
+        border: none;
+
+        font-family: $font-primary;
+        font-size: 1rem;
+        font-weight: 300;
+
+        color: $color-primary-400;
+        background-color: transparent;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::selection {
+          color: $color-neutral-1300;
+          background-color: $color-primary-600;
+        }
+      }
+
+      &:hover .todo-item__remove-button {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      &__remove-button {
+        aspect-ratio: 1;
+        width: 1.4rem;
+        padding-top: 0.1rem;
+        border: none;
+        border-radius: 0.16rem;
+
+        font-size: 1.2rem;
+        line-height: 1;
+        color: $color-primary-400;
+
+        background-color: $color-neutral-1100;
+
+        opacity: 0;
+        pointer-events: none;
+        cursor: pointer;
+
+        transition: all 0.4s ease;
+
+        &:hover {
+          filter: brightness(1.2);
+        }
+      }
+    }
+
+    &:first-of-type .todo-item {
+      border-radius: 0.2rem 0.2rem 0 0;
+    }
+  }
+}

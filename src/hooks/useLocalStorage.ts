@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
+import type { Dispatch, SetStateAction } from 'react'
 
 export function useLocalStorage<T>(
   key: string,
   initialValue: T
-): [T, (value: T | ((prev: T) => T)) => void] {
+): [T, Dispatch<SetStateAction<T>>] {
   const [storedValue, setStoredValue] = useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key)
@@ -33,5 +34,6 @@ setStoredValue(value) = (value: T) => void
 setStoredValue((prev => prev + 1)) = ((prev: T) => T) => void
 
 [T, (value: T | ((prev: T) => T )) => void]
+[T, React.Dispatch<SetStateAction<T>>]
 
 */

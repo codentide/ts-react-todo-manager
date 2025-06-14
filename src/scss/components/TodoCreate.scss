@@ -1,0 +1,50 @@
+@use '../base/colors' as *;
+@use '../base/typography' as *;
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: fit-content;
+
+  // padding: 0.6rem;
+  border-radius: 0.2rem;
+  margin-bottom: 2rem;
+
+  background-color: $color-neutral-1200;
+  outline: 1px solid transparent;
+  outline-offset: 0px;
+
+  transition: outline 0.4s ease, outline-offset 0.4s ease;
+
+  &:focus-within {
+    outline-color: $color-primary-600;
+    outline-offset: 3px;
+  }
+
+  &__create-input {
+    width: 100%;
+
+    padding: 0.8rem 1.2rem;
+    border: none;
+
+    font-family: $font-primary;
+    font-size: 1.2rem;
+    font-weight: 300;
+
+    color: $color-neutral-600;
+    background-color: transparent;
+    caret-color: $color-primary-600;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $color-neutral-1000;
+
+      font-style: italic;
+    }
+  }
+}

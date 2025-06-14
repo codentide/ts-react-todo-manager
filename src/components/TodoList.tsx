@@ -1,6 +1,6 @@
-import { useTodoContext } from '../../hooks/useTodoContext'
-import { Todoitem } from '../TodoItem/TodoItem'
-import type { TodoList as TodoListType } from '../../types'
+import { useTodoContext } from '../hooks/useTodoContext'
+import { Todoitem } from './TodoItem'
+import type { TodoList as TodoListType } from '../types'
 
 export const TodoList: React.FunctionComponent = () => {
   const { todoList } = useTodoContext()
@@ -13,5 +13,5 @@ export const TodoList: React.FunctionComponent = () => {
     ))
   }
 
-  return <ul className="todo-app__list">{renderTodos(todoList)}</ul>
+  return <ul className="todo-list">{renderTodos(todoList)}</ul>
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { useTodoContext } from '../../hooks/useTodoContext'
-import type { TodoCompleted, TodoId, TodoTitle } from '../../types'
-import './TodoItem.scss'
+import { useTodoContext } from '../hooks/useTodoContext'
+import type { TodoCompleted, TodoId, TodoTitle } from '../types'
+// import './TodoItem.scss'
 
 interface Props {
   id: TodoId
@@ -23,8 +23,8 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   const handleDoubleClick = () => setIsEditing(true)
   const handleUpdateTodo = (title: TodoTitle) => updateTodo(id, title)
   const handleBlur = () => {
-    setIsEditing(false)
     setInputValue(title)
+    setIsEditing(false)
   }
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -33,10 +33,9 @@ export const Todoitem: React.FunctionComponent<Props> = ({
 
     if (key === 'escape') {
       input.blur()
-      setInputValue(title)
     } else if (key === 'enter') {
-      handleUpdateTodo(input.value)
-      input.blur()
+      handleUpdateTodo(inputValue)
+      setIsEditing(false)
     }
   }
 
@@ -47,7 +46,7 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   }
 
   return (
-    <div className="todo-item">
+    <div className={`todo-item ${isEditing ? 'editing' : ''}`}>
       <input
         className="todo-item__checkbox"
         data-id={id}
@@ -58,7 +57,7 @@ export const Todoitem: React.FunctionComponent<Props> = ({
       />
       {isEditing ? (
         <input
-          className="todo-item__edit"
+          className="todo-item__input-edit"
           type="text"
           value={inputValue}
           onBlur={handleBlur}
@@ -72,9 +71,12 @@ export const Todoitem: React.FunctionComponent<Props> = ({
         </label>
       )}
 
-      <button className="todo-item__remove-btn" onClick={handleTodoRemove}>
-        ×
-      </button>
+      {!isEditing && (
+        // [ ] reemplazar por svg
+        <button className="todo-item__remove-button" onClick={handleTodoRemove}>
+          ×
+        </button>
+      )}
     </div>
   )
 }
