@@ -1,6 +1,13 @@
 @use '../base/typography' as *;
 @use '../base/colors' as *;
 
+// Quote content
+$quote-font-family: $font-secondary;
+$quote-text-color: $color-neutral-900;
+// Author
+$author-text-color: $color-primary-600;
+$author-font-family: $font-primary;
+
 .daily-quote {
   position: relative;
 
@@ -19,45 +26,44 @@
   isolation: isolate;
 
   p {
-    width: 72%;
+    // width: 72%;
 
-    font-family: $font-secondary;
+    font-family: $quote-font-family;
     font-size: 1.6rem;
     font-weight: 500;
     font-style: italic;
-    line-height: 1.2;
+    line-height: 1.25;
+    letter-spacing: 0.25px;
 
-    color: $color-neutral-900;
+    color: $quote-text-color;
   }
 
   a {
+    font-family: $author-font-family;
+    font-size: 0.92rem;
+    font-weight: 600;
     text-underline-offset: 2px;
-    // color: $color-neutral-900;
-    color: $color-primary-600;
+    color: $author-text-color;
+
+    cite {
+      font-style: normal;
+    }
 
     &:hover {
       filter: brightness(1.2);
     }
   }
 
-  cite {
-    font-family: $font-primary;
-    font-size: 0.92rem;
-    font-weight: 600;
-    font-style: normal;
+  &::after {
+    position: absolute;
+    z-index: -10;
+    inset: 1rem 20%;
+    content: '';
 
-    // color: $color-neutral-1100;
+    filter: blur(2rem);
+    opacity: 0.2;
+    border-radius: 9999px;
+
+    background-color: $color-neutral-1400;
   }
-
-  // &::after {
-  //   position: absolute;
-  //   inset: 1.6rem;
-  //   content: '';
-  //   z-index: -10;
-
-  //   filter: blur(2rem);
-  //   opacity: 0.2;
-
-  //   background-color: $color-neutral-1400;
-  // }
 }

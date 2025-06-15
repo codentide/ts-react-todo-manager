@@ -1,47 +1,60 @@
+// Base
 @use './base/colors' as *;
 @use './base/typography' as *;
 
-// components
+// Components
 @use './components/Header.scss' as *;
 @use './components/DailyQuote.scss' as *;
 @use './components/TodoCreate.scss' as *;
 @use './components/TodoList.scss' as *;
 @use './components/TodoControls.scss' as *;
 
+// Normalize
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-html {
+html,
+body {
   width: 100%;
   min-height: 100dvh;
 }
+
+// Styles
 
 body {
   position: relative;
 
-  font-family: $font-primary;
-  line-height: 1;
+  display: flex;
+  flex-direction: column;
+
   color-scheme: light dark;
   accent-color: hsl($hue-primary, 80%, 50%);
 
-  width: 100%;
-  min-height: 100dvh;
+  font-family: $font-primary;
+  line-height: 1;
 
-  background: $color-neutral-1300;
+  background-color: $color-neutral-1300;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  content: '';
+  z-index: -20;
+
   background: radial-gradient(
     at left top,
     $color-neutral-1250,
-    hsl($hue-primary, 28%, 12%),
-    $color-neutral-1300 70%,
-    $color-neutral-1400
+    hsl($hue-primary, 32%, 12%),
+    $color-neutral-1300
   );
 }
 
 body::after {
-  position: absolute;
+  position: fixed;
   inset: 0;
   content: '';
   z-index: -10;
@@ -49,12 +62,9 @@ body::after {
   background: url('/img/background-texture.webp');
   background-size: cover;
 
+  opacity: 0.6;
+  pointer-events: none;
   mix-blend-mode: multiply;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
 }
 
 .todo-container {
@@ -64,12 +74,12 @@ body {
   flex-direction: column;
 
   max-width: 520px;
-
   margin: 2rem auto;
 
-  filter: drop-shadow(0 0.4rem 1rem hsl(0, 0%, 0%, 0.2));
+  filter: drop-shadow(0 0.4rem 0.8rem hsl(0, 0%, 0%, 0.2));
 }
 
+// Error de mensaje "global"
 .error-message {
   position: absolute;
   top: -1.6rem;
