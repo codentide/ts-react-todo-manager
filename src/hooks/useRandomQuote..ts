@@ -18,22 +18,19 @@ export const useRandomQuote = (): Quote => {
       try {
         const response = await fetch(url)
 
-        if (!response.ok) {
+        if (!response.ok)
           throw new Error(
             `[quote-api] Error HTTP ${response.status} - ${response.statusText}`
           )
-        }
 
         const quoteArray: QuoteAPI[] = await response.json()
 
         if (Array.isArray(quoteArray) && quoteArray.length > 0) {
           const { author, content } = quoteArray[0]
-          const newQuote = {
+          const newQuote: Quote = {
             quote: content,
             author,
           }
-          console.log(newQuote)
-
           setQuote(newQuote)
         }
       } catch (error) {

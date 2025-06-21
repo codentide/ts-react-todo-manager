@@ -9,7 +9,6 @@ import {
 const App = () => (
   <>
     <Header />
-    <section className="hero">{/* img brackgrouns */}</section>
     <main className="todo-container">
       <DailyQuote />
       <TodoCreate />

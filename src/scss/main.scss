@@ -36,6 +36,8 @@ body {
   font-family: $font-primary;
   line-height: 1;
 
+  overflow-y: scroll;
+
   background-color: $color-neutral-1300;
 }
 

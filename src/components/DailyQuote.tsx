@@ -1,17 +1,19 @@
 import { useRandomQuote } from '../hooks/useRandomQuote.'
 
 export const DailyQuote = () => {
-  const { author, quote } = useRandomQuote()
+  const currentQuote = useRandomQuote()
+
+  // const value = getValue<string>('Hola')
 
   return (
     <div className="daily-quote">
-      <p>{quote}</p>
+      <p>{currentQuote.quote}</p>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href={`https://www.google.com/search?q=${author}`}
+        href={`https://www.google.com/search?q=${currentQuote.author}`}
       >
-        <cite>{author}</cite>
+        <cite>{currentQuote.author}</cite>
       </a>
     </div>
   )
