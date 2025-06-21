@@ -8,7 +8,7 @@ $quote-text-color: $color-neutral-900;
 $author-text-color: $color-primary-600;
 $author-font-family: $font-primary;
 
-.daily-quote {
+.daily-quote:has(p) {
   position: relative;
 
   display: flex;
@@ -27,7 +27,7 @@ $author-font-family: $font-primary;
 
   opacity: 0;
 
-  animation: appear 1.2s ease 0.6s forwards;
+  animation: appear 1s ease 0.4s forwards;
 
   p {
     // width: 72%;
@@ -69,14 +69,5 @@ $author-font-family: $font-primary;
     border-radius: 9999px;
 
     background-color: $color-neutral-1400;
-  }
-}
-
-@keyframes appear {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }

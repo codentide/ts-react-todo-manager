@@ -7,26 +7,28 @@ export const Header = () => {
     <header className="header">
       <div className="title-container">
         <LogoSVG />
-        <h1 className="title-container__title">React/TS To-do Manager</h1>
+        <h1 className="title-container__title">TS/React To-do Manager</h1>
       </div>
       <div className="author-info">
-        <p className="author-info__name">
-          Created by: <b>Marco Del Boccio</b>
-        </p>
-        <div className="author-info__links">
-          <a
-            target="_blank"
-            href="https://github.com/codentide/ts-react-todo-app"
-          >
-            <GithubSVG />
-          </a>
-          <a
-            target="_blank"
-            href="https://www.linkedin.com/in/marco-del-boccio-99b31824a/"
-          >
-            <LinkendinSVG />
-          </a>
-        </div>
+        <p className="author-info__name">Marco Del Boccio</p>
+        <ul className="author-info__link-list">
+          <li>
+            <a
+              target="_blank"
+              href="https://github.com/codentide/ts-react-todo-app"
+            >
+              <GithubSVG />
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.linkedin.com/in/marco-del-boccio-99b31824a/"
+            >
+              <LinkendinSVG />
+            </a>
+          </li>
+        </ul>
       </div>
     </header>
   )

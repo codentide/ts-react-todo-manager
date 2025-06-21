@@ -1,4 +1,5 @@
 @use '../base/colors' as *;
+@use '../base/media-queries' as m;
 
 .header {
   display: flex;
@@ -20,27 +21,35 @@
       margin-bottom: 0.2rem;
 
       font-size: 1rem;
-      line-height: 1.2;
       font-weight: 600;
       color: $color-primary-600;
     }
 
     svg {
       aspect-ratio: 1;
-      width: 2rem;
-      height: 2rem;
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+
+    @include m.mobile-small {
+      flex-direction: column;
+      gap: 1rem;
+
+      svg {
+        width: 3.2rem;
+        height: 3.2rem;
+      }
     }
   }
 
   .author-info {
     display: flex;
-    flex-direction: column;
-    align-items: end;
+    align-items: center;
 
     gap: 0.6rem;
 
     &__name {
-      font-size: 0.8rem;
+      font-size: 1rem;
 
       color: $color-neutral-1000;
 
@@ -48,33 +57,53 @@
         font-weight: 600;
         color: $color-neutral-900;
       }
+
+      @include m.mobile-small {
+        display: none;
+      }
     }
 
-    &__links {
+    &__link-list {
       display: flex;
       align-items: center;
       gap: 0.4rem;
 
       width: fit-content;
-      height: 1rem;
+      height: 1.2rem;
 
-      a {
-        aspect-ratio: 1;
+      list-style: none;
+
+      li {
         height: 100%;
 
-        transition: filter 0.4s ease;
-
-        &:hover {
-          filter: brightness(1.4);
-        }
-
-        svg {
-          width: 100%;
+        a {
+          aspect-ratio: 1;
           height: 100%;
 
-          fill: $color-neutral-1000;
+          transition: filter 0.4s ease;
+
+          &:hover {
+            filter: brightness(1.4);
+          }
+
+          svg {
+            width: 100%;
+            height: 100%;
+
+            fill: $color-neutral-1000;
+          }
         }
       }
+
+      @include m.mobile-small {
+        height: 1.6rem;
+      }
     }
+  }
+
+  @include m.mobile-small {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.6rem 8% 0;
   }
 }

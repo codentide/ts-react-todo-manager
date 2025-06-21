@@ -1,5 +1,6 @@
 @use '../base/colors' as *;
 @use '../base/typography' as *;
+@use '../base/media-queries' as m;
 
 .todo-controls {
   display: flex;
@@ -76,14 +77,30 @@
     filter: brightness(0.8);
     cursor: pointer;
 
-    color: $color-neutral-700;
-    background-color: $color-neutral-1200;
+    color: hsl(0, 24%, 56%);
+    background-color: hsl(0, 16%, 16%);
 
     transition: opacity 0.2s ease;
 
     &.active {
       opacity: 1;
       pointer-events: all;
+    }
+  }
+
+  @include m.mobile-small {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.4rem;
+
+    .filter-container {
+      order: 2;
+      flex-wrap: wrap;
+
+      &__filter-button {
+        // width: 100%;
+        flex-grow: 1;
+      }
     }
   }
 }

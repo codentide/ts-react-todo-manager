@@ -1,6 +1,7 @@
 // Base
 @use './base/colors' as *;
 @use './base/typography' as *;
+@use './base/media-queries' as m;
 
 // Components
 @use './components/Header.scss' as *;
@@ -76,9 +77,19 @@ body::after {
   flex-direction: column;
 
   max-width: 520px;
-  margin: 2rem auto;
+  padding: 2.8rem 0;
+  margin: 0rem auto;
 
   filter: drop-shadow(0 0.4rem 0.8rem hsl(0, 0%, 0%, 0.2));
+
+  opacity: 0;
+  animation: appear 1s ease 0.4s forwards;
+
+  @include m.mobile-large {
+    max-width: auto;
+
+    padding: 2.8rem 8%;
+  }
 }
 
 // Error de mensaje "global"
@@ -92,4 +103,15 @@ body::after {
   font-weight: 300;
 
   color: $text-error;
+}
+
+//
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

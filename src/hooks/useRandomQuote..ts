@@ -7,11 +7,8 @@ const quoteUrl = `${baseUrl}/random?limit=1&maxLength=100&tags=${QUOTE_TAGS.join
   '|'
 )}`
 
-export const useRandomQuote = (): Quote => {
-  const [quote, setQuote] = useState<Quote>({
-    author: '',
-    quote: '',
-  })
+export const useRandomQuote = (): Quote | null => {
+  const [quote, setQuote] = useState<Quote | null>(null)
 
   useEffect(() => {
     async function getQuoteFromApi(url: string) {

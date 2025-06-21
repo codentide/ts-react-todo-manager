@@ -30,7 +30,7 @@ export const TodoProvider: React.FunctionComponent<TodoProviderProps> = ({
   // Create a todo
   function createTodo(title: TodoTitle) {
     const newTodo: Todo = {
-      id: crypto.randomUUID(),
+      id: Date.now().toString(),
       title,
       completed: false,
     }
