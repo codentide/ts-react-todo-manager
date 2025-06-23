@@ -24,7 +24,7 @@
     // opacity: 0;
 
     color: $color-neutral-900;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.4s ease;
 
     &.active {
       opacity: 1;
@@ -52,12 +52,11 @@
       filter: brightness(0.8);
       cursor: pointer;
 
-      transition: all 0.4s ease;
-
       &.active {
         color: $color-neutral-100;
         background-color: $color-primary-600;
         filter: brightness(1);
+        transition: all 0.4s ease;
       }
     }
   }

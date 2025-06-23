@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useTodoContext } from '../hooks/useTodoContext'
+import { useTodoStore } from '../store/todo.store'
 
 export const TodoCreate: React.FunctionComponent = (): React.JSX.Element => {
-  const { createTodo } = useTodoContext()
+  const createTodo = useTodoStore((state) => state.createTodo)
   const [inputValue, setInputValue] = useState('')
   const [inputError, setInputError] = useState<string | null>(null)
 
