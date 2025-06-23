@@ -1,9 +1,11 @@
 import type { TodoCompleted, TodoId, TodoTitle } from '../types'
 import { useState } from 'react'
 // import './TodoItem.scss'
+// import '../scss/components/CheckBox.scss'
 
 import CrossSVG from '../assets/svg/small-cross.svg?react'
 import { useTodoStore } from '../store/todo.store'
+import { CheckBox } from './CheckBox'
 
 interface Props {
   id: TodoId
@@ -77,14 +79,30 @@ export const Todoitem: React.FunctionComponent<Props> = ({
 
   return (
     <div className={`todo-item ${isEditClass} ${hasErrorClass}`}>
-      <input
+      {/* <div className="checkbox-wrapper-13">
+        <input
+          className="todo-item__checkbox"
+          data-id={id}
+          type="checkbox"
+          name="isCompleted"
+          checked={completed}
+          onChange={handleTodoCheck}
+        />
+      </div> */}
+
+      <CheckBox
+        name="isCompleted"
+        checked={completed}
+        onChange={handleTodoCheck}
+      />
+      {/* <input
         className="todo-item__checkbox"
         data-id={id}
         type="checkbox"
         name="isCompleted"
         checked={completed}
         onChange={handleTodoCheck}
-      />
+      /> */}
       {isEditing ? (
         <input
           className="todo-item__input-edit"

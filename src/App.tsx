@@ -5,6 +5,7 @@ const App = () => (
     <Header />
     <main className="todo-container">
       {/* <DailyQuote /> */}
+
       <TodoCreate />
       <TodoList />
       <TodoControls />

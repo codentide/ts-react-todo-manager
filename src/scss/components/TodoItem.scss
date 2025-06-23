@@ -1,0 +1,125 @@
+@use '../base/colors' as *;
+@use '../base/typography' as *;
+
+.todo-item {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  padding: 0 1.2rem;
+  padding-right: 1rem;
+  border-bottom: 1px solid $color-neutral-1150;
+
+  background-color: $color-neutral-1200;
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    background-color: $color-neutral-1150;
+  }
+
+  &.editing {
+    background-color: $color-neutral-1250;
+    outline: none;
+  }
+
+  &.error {
+    background-color: $color-error;
+
+    .todo-item__input-edit {
+      color: $text-error !important;
+    }
+  }
+
+  // [ ] Crear un custom checkbox
+
+  &__checkbox {
+    &:checked + label {
+      text-decoration: line-through;
+      color: $color-neutral-1000;
+    }
+  }
+
+  &__label {
+    width: 100%;
+    padding: 1.25rem 1rem;
+
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: 300;
+
+    color: $color-neutral-500;
+    transition: all 0.4s ease;
+
+    user-select: none;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__input-edit {
+    width: 100%;
+    padding: 1rem 0.96rem;
+
+    border: none;
+
+    font-family: $font-primary;
+    font-size: 1rem;
+    font-weight: 300;
+
+    color: $color-primary-400;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::selection {
+      color: $color-neutral-1300;
+      background-color: $color-primary-600;
+    }
+  }
+
+  &:hover .todo-item__remove-button {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__remove-button {
+    display: grid;
+    place-items: center;
+
+    aspect-ratio: 1;
+    width: 1.6rem;
+    padding: 0.2rem;
+
+    border: none;
+    border-radius: 0.16rem;
+
+    background-color: $color-neutral-1100;
+    background-color: transparent;
+
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+
+    transition: all 0.4s ease;
+
+    svg {
+      width: 100%;
+      height: 100%;
+
+      fill: $color-neutral-1000;
+
+      transition: fill 0.4s ease;
+    }
+
+    &:hover {
+      filter: brightness(1.2);
+
+      svg {
+        fill: $text-error;
+      }
+    }
+  }
+}

@@ -90,7 +90,7 @@
   @include m.mobile-small {
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 0.4rem;
+    gap: 1rem;
 
     .filter-container {
       order: 2;
