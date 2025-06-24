@@ -1,65 +1,47 @@
-# React/TS To-do Manager
+<div align="center">
+  <a href="https://ts-react-todo-manager.netlify.app" target="_blank">
+    <img src="./public/img/og-image.png" style="border-radius:12px;" /> 
+  </a>
+  <h3 style="font-size:32px;">
+    <strong>TS/React To-do Manager</strong>
+  </h3>
+  <p>Una aplicación interactiva de gestión de tareas, desarrollada con React y TypeScript. Este proyecto ha sido construido aplicando principios de diseño de componentes y buenas prácticas de tipado estricto, lo que resulta en una interfaz de usuario eficiente y una base de código clara y mantenible.</p>
 
-Una aplicación interactiva de gestión de tareas, desarrollada con React y TypeScript. Este proyecto ha sido construido aplicando principios de diseño de componentes y buenas prácticas de tipado estricto, lo que resulta en una interfaz de usuario eficiente y una base de código clara y mantenible.
+<a href="https://ts-react-todo-manager.netlify.app" target="_blank">Live Demo</a>
 
-![React/TS To-do Manager](public/img/og-image.png)
+  <div align="center">
 
-## 📋 Características
+[![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+![React](https://img.shields.io/badge/React-323232.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+[![Zustand](https://img.shields.io/badge/Zustand-433e38?style=for-the-badge&logo=react&logoColor=f8ad00)](https://zustand-demo.pmnd.rs/)
+[![SCSS](https://img.shields.io/badge/SCSS-CC6699?style=for-the-badge&logo=sass&logoColor=white)](https://sass-lang.com/)
+[![ESLint](https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/)
 
-- **Gestión completa de tareas**: Crear, editar, marcar como completadas y eliminar tareas
-- **Filtrado de tareas**: Visualiza todas las tareas, solo las pendientes o solo las completadas
-- **Persistencia de datos**: Almacenamiento local para mantener tus tareas entre sesiones
-- **Citas motivacionales**: Muestra citas aleatorias para inspirarte cada día
-- **Diseño responsivo**: Experiencia de usuario optimizada para dispositivos móviles y de escritorio
-- **Interfaz moderna**: Diseño limpio y minimalista con animaciones sutiles
+  </div>
 
-## 🛠️ Tecnologías utilizadas
+</div>
 
-- **React 19**: Biblioteca de UI para construir interfaces de usuario
-- **TypeScript**: Tipado estático para un código más robusto
-- **Vite**: Herramienta de construcción rápida para desarrollo moderno
-- **SASS**: Preprocesador CSS para estilos avanzados
-- **Context API**: Gestión de estado global de la aplicación
-- **Custom Hooks**: Lógica reutilizable para funcionalidades específicas
-- **API de Citas**: Integración con API externa para mostrar citas motivacionales
+## 🧪 Funcionalidades principales
 
-## 🚀 Instalación y uso
+- **Gestión de tareas**: Implementación completa de CRUD para tareas
+- **Filtrado**: Filtros para visualizar tareas según su estado
+- **Persistencia**: Uso de localStorage para guardar tareas entre sesiones
+- **Diseño responsivo**: Adaptable a diferentes tamaños de pantalla
 
-1. Clona este repositorio:
+## 🧭 Guía de uso
 
-   ```bash
-   git clone https://github.com/codentide/ts-react-todo-app.git
-   cd ts-react-todo-app
-   ```
-
-2. Instala las dependencias:
-
-   ```bash
-   npm install
-   # o con pnpm
-   pnpm install
-   ```
-
-3. Crea un archivo `.env` en la raíz del proyecto con la siguiente variable:
-
-   ```
-   VITE_QUOTES_BASE_URL=https://api.quotable.io
-   ```
-
-4. Inicia el servidor de desarrollo:
-
-   ```bash
-   npm run dev
-   # o con pnpm
-   pnpm dev
-   ```
-
-5. Abre tu navegador en `http://localhost:5173`
+- **Crear tarea:** Haga click en el campo de texto, coloque un nombre para la tarea y presione `enter`
+- **Editar tarea:** Haga doble click en el titulo de la tarea y coloque un nuevo nombre para la tarea
+- **Completar tarea:** Haga click en el checkbox a la izquierda de la tarea para completar o descompletar la tarea
+- **Eliminar tarea:** Coloque la flecha del mouse encima de la tarea que desea eliminar y haga click en la `x` al lado derecho de la tarea
+- **Filtrar tareas:** Presione alguno de los botones de filtro al final de la lista de tareas
+- **Limpiar tareas completadas:** Al tener tareas completadas aparecerá un botón "clear done" al presionarlo se borrarán todas las tareas completadas
 
 ## 📦 Estructura del proyecto
 
 ```
-ts-react-todo-app/
+ts-react-todo-manager/
 ├── public/               # Archivos estáticos
 ├── src/
 │   ├── assets/           # Recursos (SVGs, imágenes)
@@ -74,20 +56,33 @@ ts-react-todo-app/
 └── ...                   # Archivos de configuración
 ```
 
-## 🧪 Funcionalidades principales
+## 🚀 Instalación y uso
 
-- **Gestión de tareas**: Implementación completa de CRUD para tareas
-- **Filtrado**: Filtros para visualizar tareas según su estado
-- **Persistencia**: Uso de localStorage para guardar tareas entre sesiones
-- **Citas diarias**: Integración con API externa para mostrar citas motivacionales
-- **Diseño responsivo**: Adaptable a diferentes tamaños de pantalla
+1. Clona este repositorio:
 
-## 👤 Autor
+   ```bash
+   git clone https://github.com/codentide/ts-react-todo-manager.git
+   cd ts-react-todo-manager
+   ```
 
-- **Marco Del Boccio**
-  - [GitHub](https://github.com/codentide)
-  - [LinkedIn](https://www.linkedin.com/in/marco-del-boccio-99b31824a/)
+2. Instala las dependencias:
+
+   ```bash
+   npm install
+   # o con pnpm
+   pnpm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   npm run dev
+   # o con pnpm
+   pnpm dev
+   ```
+
+4. Abre tu navegador en `http://localhost:5173`
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+Este proyecto está bajo la Licencia MIT
