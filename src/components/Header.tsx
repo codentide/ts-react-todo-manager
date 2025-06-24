@@ -15,7 +15,7 @@ export const Header = () => {
           <li>
             <a
               target="_blank"
-              href="https://github.com/codentide/ts-react-todo-app"
+              href="https://github.com/codentide/ts-react-todo-manager"
             >
               <GithubSVG />
             </a>

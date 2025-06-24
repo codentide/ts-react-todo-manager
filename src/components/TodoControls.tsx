@@ -1,7 +1,7 @@
-import { TODO_FILTERS } from '../constants'
-import { useTodoContext } from '../hooks/useTodoContext'
-import { FilterButton } from './FilterButton'
 import type { TodoFilter } from '../types'
+import { TODO_FILTERS } from '../constants'
+import { FilterButton } from './FilterButton'
+import { useTodoStore } from '../store/todo.store'
 
 const TODO_FILTER_BUTTONS = {
   [TODO_FILTERS.ALL]: 'All',
@@ -13,20 +13,16 @@ const TODO_FILTER_BUTTONS = {
 const TODO_FILTER_BUTTON_ARRAY = Object.entries(TODO_FILTER_BUTTONS)
 
 export const TodoControls: React.FunctionComponent = () => {
-  const { pendingTodoCount, completedTodoCount, removeAllCompletedTodos } =
-    useTodoContext()
+  const deleteAllDone = useTodoStore((state) => state.deleteAllDone)
 
-  const deleteDoneButtonClass = `todo-controls__delete-done-button  ${
-    completedTodoCount > 0 ? 'active' : ''
-  }`
-  // const pendingCountClass = `todo-controls__pending-count ${
-  //   pendingTodoCount > 0 ? 'active' : ''
-  // }`
+  const todos = useTodoStore((state) => state.todos)
+  const doneTodoCount: number = todos.filter((todo) => todo.completed).length
+  const undoneTodoCount: number = todos.length - doneTodoCount
 
   return (
     <section className="todo-controls">
       <span className="todo-controls__pending-count">
-        {pendingTodoCount} Item left
+        {undoneTodoCount} Item left
       </span>
 
       <div className="filter-container">
@@ -40,8 +36,10 @@ export const TodoControls: React.FunctionComponent = () => {
       </div>
 
       <button
-        className={deleteDoneButtonClass}
-        onClick={removeAllCompletedTodos}
+        className={`todo-controls__delete-done-button  ${
+          doneTodoCount > 0 ? 'active' : ''
+        }`}
+        onClick={deleteAllDone}
       >
         Clear done
       </button>

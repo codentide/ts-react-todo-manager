@@ -1,0 +1,60 @@
+@use '../base/colors' as c;
+
+.checkbox {
+  display: inline-grid;
+  place-items: center;
+
+  aspect-ratio: 1;
+  width: 1.6rem;
+
+  border: 1px solid c.$color-neutral-1100;
+  outline: 1px solid transparent;
+  border-radius: 0.32rem;
+
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='transparent' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+  background-size: 0%;
+  background-position: 0.72rem 0.72rem;
+
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    border: 1px solid c.$color-primary-800;
+  }
+
+  &:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    background-size: 100%;
+    background-position: 0 0;
+
+    border-color: transparent;
+    background-color: c.$color-primary-600;
+
+    & + label {
+      text-decoration: line-through;
+      color: c.$color-neutral-1000;
+    }
+
+    &:focus {
+      outline: 3px solid hsl(c.$hue-primary, 100%, 56%, 0.16);
+    }
+  }
+}
+
+// @keyframes check {
+//   0% {
+//     outline: 1px solid transparent;
+//   }
+
+//   75% {
+//     outline: 4px solid hsl(c.$hue-primary, 100%, 64%, 0.2);
+//   }
+
+//   100% {
+//     outline: 1px solid transparent;
+//   }
+// }

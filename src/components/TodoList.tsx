@@ -1,9 +1,16 @@
-import { useTodoContext } from '../hooks/useTodoContext'
 import { Todoitem } from './TodoItem'
 import type { TodoList as TodoListType } from '../types'
+import { useTodos, useTodoStore } from '../store/todo.store'
+import { TODO_FILTERS } from '../constants'
 
 export const TodoList: React.FunctionComponent = () => {
-  const { todoList } = useTodoContext()
+  const todos = useTodos()
+  const filter = useTodoStore((state) => state.filter)
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === TODO_FILTERS.COMPLETED) return todo.completed
+    if (filter === TODO_FILTERS.PENDING) return !todo.completed
+    return todo
+  })
 
   function renderTodos(todos: TodoListType) {
     return todos.map((item) => (
@@ -15,21 +22,7 @@ export const TodoList: React.FunctionComponent = () => {
 
   return (
     <ul className="todo-list">
-      {todoList.length > 0 ? (
-        renderTodos(todoList)
-      ) : (
-        <div
-        // style={{
-        //   display: 'flex',
-        //   flexDirection: 'column',
-        //   alignItems: 'center',
-        //   justifyContent: 'center',
-        //   padding: '1rem',
-        // }}
-        >
-          {/* <span>Es hora de hacer algo brillante</span> */}
-        </div>
-      )}
+      {todos.length > 0 ? renderTodos(filteredTodos) : <div></div>}
     </ul>
   )
 }

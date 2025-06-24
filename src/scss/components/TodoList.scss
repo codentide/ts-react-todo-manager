@@ -70,6 +70,10 @@
         transition: all 0.4s ease;
 
         user-select: none;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
       }
 
       &__input-edit {

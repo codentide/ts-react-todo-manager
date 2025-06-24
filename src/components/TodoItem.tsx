@@ -1,9 +1,11 @@
-import { useState } from 'react'
-import { useTodoContext } from '../hooks/useTodoContext'
 import type { TodoCompleted, TodoId, TodoTitle } from '../types'
+import { useState } from 'react'
 // import './TodoItem.scss'
+// import '../scss/components/CheckBox.scss'
 
 import CrossSVG from '../assets/svg/small-cross.svg?react'
+import { useTodoStore } from '../store/todo.store'
+import { CheckBox } from './CheckBox'
 
 interface Props {
   id: TodoId
@@ -16,15 +18,18 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   title,
   completed,
 }) => {
-  const { removeTodo, checkTodo, updateTodo } = useTodoContext()
+  const deleteTodo = useTodoStore((state) => state.deleteTodo)
+  const updateTodoTitle = useTodoStore((state) => state.updateTodoTitle)
+  const toggleTodo = useTodoStore((state) => state.toggleTodo)
+
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>(title)
   const [inputError, setInputError] = useState<string | null>(null)
 
-  const handleTodoRemove = () => removeTodo(id)
-  const handleTodoCheck = () => checkTodo(id, !completed)
+  const handleTodoRemove = () => deleteTodo(id)
+  const handleTodoCheck = () => toggleTodo(id, !completed)
   const handleDoubleClick = () => setIsEditing(true)
-  const handleUpdateTodo = (title: TodoTitle) => updateTodo(id, title)
+  const handleUpdateTodo = (title: TodoTitle) => updateTodoTitle(id, title)
   const handleBlur = () => {
     setInputError(null)
     setInputValue(title)
@@ -74,14 +79,30 @@ export const Todoitem: React.FunctionComponent<Props> = ({
 
   return (
     <div className={`todo-item ${isEditClass} ${hasErrorClass}`}>
-      <input
+      {/* <div className="checkbox-wrapper-13">
+        <input
+          className="todo-item__checkbox"
+          data-id={id}
+          type="checkbox"
+          name="isCompleted"
+          checked={completed}
+          onChange={handleTodoCheck}
+        />
+      </div> */}
+
+      <CheckBox
+        name="isCompleted"
+        checked={completed}
+        onChange={handleTodoCheck}
+      />
+      {/* <input
         className="todo-item__checkbox"
         data-id={id}
         type="checkbox"
         name="isCompleted"
         checked={completed}
         onChange={handleTodoCheck}
-      />
+      /> */}
       {isEditing ? (
         <input
           className="todo-item__input-edit"

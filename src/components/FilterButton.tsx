@@ -1,4 +1,4 @@
-import { useTodoContext } from '../hooks/useTodoContext'
+import { useTodoStore } from '../store/todo.store'
 import type { TodoFilter } from '../types'
 
 interface Props {
@@ -10,8 +10,9 @@ export const FilterButton: React.FunctionComponent<Props> = ({
   filterValue,
   label,
 }) => {
-  const { updateFilter, activeFilter } = useTodoContext()
-  const className = activeFilter === filterValue ? 'active' : ''
+  const updateFilter = useTodoStore((state) => state.updateFilter)
+  const filter = useTodoStore((state) => state.filter)
+  const className = filter === filterValue ? 'active' : ''
 
   return (
     <button

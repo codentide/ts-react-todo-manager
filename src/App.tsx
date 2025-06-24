@@ -1,16 +1,11 @@
-import {
-  TodoControls,
-  TodoList,
-  TodoCreate,
-  Header,
-  DailyQuote,
-} from './components'
+import { TodoControls, TodoList, TodoCreate, Header } from './components'
 
 const App = () => (
   <>
     <Header />
     <main className="todo-container">
-      <DailyQuote />
+      {/* <DailyQuote /> */}
+
       <TodoCreate />
       <TodoList />
       <TodoControls />
