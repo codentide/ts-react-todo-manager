@@ -1,23 +1,16 @@
-import type { TodoCompleted, TodoId, TodoTitle } from '../types'
+import type { TodoIsChecked, TodoId, TodoTitle } from '../types'
 import { useState } from 'react'
-// import './TodoItem.scss'
-// import '../scss/components/CheckBox.scss'
-
-import CrossSVG from '../assets/svg/small-cross.svg?react'
 import { useTodoStore } from '../store/todo.store'
 import { CheckBox } from './CheckBox'
+import CrossSVG from '../assets/svg/small-cross.svg?react'
 
 interface Props {
   id: TodoId
   title: TodoTitle
-  completed: TodoCompleted
+  isChecked: TodoIsChecked
 }
 
-export const Todoitem: React.FunctionComponent<Props> = ({
-  id,
-  title,
-  completed,
-}) => {
+export const Todoitem: React.FunctionComponent<Props> = ({ id, title, isChecked }) => {
   const deleteTodo = useTodoStore((state) => state.deleteTodo)
   const updateTodoTitle = useTodoStore((state) => state.updateTodoTitle)
   const toggleTodo = useTodoStore((state) => state.toggleTodo)
@@ -27,7 +20,7 @@ export const Todoitem: React.FunctionComponent<Props> = ({
   const [inputError, setInputError] = useState<string | null>(null)
 
   const handleTodoRemove = () => deleteTodo(id)
-  const handleTodoCheck = () => toggleTodo(id, !completed)
+  const handleTodoCheck = () => toggleTodo(id, !isChecked)
   const handleDoubleClick = () => setIsEditing(true)
   const handleUpdateTodo = (title: TodoTitle) => updateTodoTitle(id, title)
   const handleBlur = () => {
@@ -79,30 +72,7 @@ export const Todoitem: React.FunctionComponent<Props> = ({
 
   return (
     <div className={`todo-item ${isEditClass} ${hasErrorClass}`}>
-      {/* <div className="checkbox-wrapper-13">
-        <input
-          className="todo-item__checkbox"
-          data-id={id}
-          type="checkbox"
-          name="isCompleted"
-          checked={completed}
-          onChange={handleTodoCheck}
-        />
-      </div> */}
-
-      <CheckBox
-        name="isCompleted"
-        checked={completed}
-        onChange={handleTodoCheck}
-      />
-      {/* <input
-        className="todo-item__checkbox"
-        data-id={id}
-        type="checkbox"
-        name="isCompleted"
-        checked={completed}
-        onChange={handleTodoCheck}
-      /> */}
+      <CheckBox name="isisChecked" checked={isChecked} onChange={handleTodoCheck} />
       {isEditing ? (
         <input
           className="todo-item__input-edit"
@@ -119,7 +89,6 @@ export const Todoitem: React.FunctionComponent<Props> = ({
         </label>
       )}
       {!isEditing && (
-        // [ ] reemplazar por svg
         <button className="todo-item__remove-button" onClick={handleTodoRemove}>
           <CrossSVG />
         </button>

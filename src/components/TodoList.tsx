@@ -7,8 +7,8 @@ export const TodoList: React.FunctionComponent = () => {
   const todos = useTodos()
   const filter = useTodoStore((state) => state.filter)
   const filteredTodos = todos.filter((todo) => {
-    if (filter === TODO_FILTERS.COMPLETED) return todo.completed
-    if (filter === TODO_FILTERS.PENDING) return !todo.completed
+    if (filter === TODO_FILTERS.COMPLETED) return todo.isChecked
+    if (filter === TODO_FILTERS.PENDING) return !todo.isChecked
     return todo
   })
 
@@ -20,9 +20,5 @@ export const TodoList: React.FunctionComponent = () => {
     ))
   }
 
-  return (
-    <ul className="todo-list">
-      {todos.length > 0 ? renderTodos(filteredTodos) : <div></div>}
-    </ul>
-  )
+  return <ul className="todo-list">{todos.length > 0 ? renderTodos(filteredTodos) : <div></div>}</ul>
 }
