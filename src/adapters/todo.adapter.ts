@@ -1,6 +1,6 @@
 import type { Todo, TodoDatabase } from '../types'
 
-const adaptTodo = ({ id, title, is_checked, created_at }: TodoDatabase): Todo => {
+export const adaptTodo = ({ id, title, is_checked, created_at }: TodoDatabase): Todo => {
   return {
     id,
     title,

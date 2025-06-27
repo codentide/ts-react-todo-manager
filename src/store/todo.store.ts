@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import type { Todo, TodoIsChecked, TodoFilter, TodoId, TodoTitle } from '../types'
-import { createTodoDatabase, getTodosDatabase } from '../services/todo.service'
-import { adaptTodoArray } from '../adapters/todo.adapter'
+import { createTodoDatabase, getTodosDatabase, removeTodoDatabase } from '../services/todo.service'
+import { adaptTodo, adaptTodoArray } from '../adapters/todo.adapter'
 
 interface State {
   todos: Todo[]
@@ -33,20 +33,39 @@ export const useTodoStore = create<State & Actions>((set, get) => ({
     }
   },
   createTodo: async (title) => {
-    const newTodo = {
-      id: Date.now(),
+    // Crear Todo cliente
+    const clientTodo: Todo = {
+      id: Date.now().toString(),
       title,
       isChecked: false,
     }
 
-    set((state) => ({ todos: [...state.todos, newTodo] }))
-    // [ ]: Unificar esta lógica
-    await createTodoDatabase({ title })
+    // Guardar en el estado cliente (Actualización optimista)
+    set((state) => ({ todos: [...state.todos, clientTodo] }))
+
+    // Crear todo base de datos
+    const { data, error } = await createTodoDatabase(clientTodo.title)
+    const { todos } = get()
+
+    if (!error) {
+      const adaptedTodo = adaptTodo(data)
+      const newTodos = todos.map((todo) => {
+        return clientTodo.id === todo.id ? adaptedTodo : todo
+      })
+
+      set({ todos: newTodos })
+    } else {
+      const newTodos = todos.filter((todo) => clientTodo.id !== todo.id)
+
+      set({ todos: newTodos })
+    }
   },
-  deleteTodo: (id) => {
+  deleteTodo: async (id) => {
     const { todos } = get()
     const newTodos = todos.filter((todo) => todo.id !== id)
     set({ todos: newTodos })
+
+    await removeTodoDatabase(id)
   },
   updateTodoTitle: (id, title) => {
     const { todos } = get()

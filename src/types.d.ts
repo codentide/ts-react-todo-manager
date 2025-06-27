@@ -3,7 +3,7 @@ import { TODO_FILTERS } from './constants'
 // [ ]: Crear tipo cliente y tipo db de todo
 
 interface TodoDatabase {
-  id: number
+  id: string
   title: string
   is_checked: boolean
   user_id: string
@@ -11,7 +11,7 @@ interface TodoDatabase {
 }
 
 interface Todo {
-  id: number
+  id: string
   title: string
   isChecked: boolean
   // completed: boolean
