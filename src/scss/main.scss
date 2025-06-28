@@ -3,6 +3,9 @@
 @use './base/typography' as *;
 @use './base/media-queries' as m;
 
+// Pages
+@use './pages/AuthPage.scss' as *;
+
 // Components
 @use './components/Header.scss' as *;
 @use './components/DailyQuote.scss' as *;
@@ -10,6 +13,7 @@
 @use './components/TodoList.scss' as *;
 @use './components/TodoItem.scss' as *;
 @use './components/TodoControls.scss' as *;
+@use './components/Form.scss' as *;
 
 // Normalize
 * {
@@ -52,12 +56,7 @@ body::before {
   content: '';
   z-index: -20;
 
-  background: radial-gradient(
-    at left top,
-    $color-neutral-1250,
-    hsl($hue-primary, 32%, 12%),
-    $color-neutral-1300
-  );
+  background: radial-gradient(at left top, $color-neutral-1250, hsl($hue-primary, 32%, 12%), $color-neutral-1300);
 }
 
 body::after {

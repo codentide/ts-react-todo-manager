@@ -6,30 +6,30 @@ import { Header } from './components'
 import { useAuthSync } from './hooks/useAuthSync'
 
 const App = () => {
-  const user = useAuthStore((state) => state.user)
-  const isLoading = useAuthStore((state) => state.isLoading)
   const navigate = useNavigate()
-
-  // Escucha y actualiza authStore
+  const user = useAuthStore((state) => state.user)
+  const authIsLoading = useAuthStore((state) => state.isLoading)
   useAuthSync()
 
   useEffect(() => {
-    if (isLoading) return
+    if (authIsLoading) return
 
     const path = location.pathname
 
     if (user) {
       if (user && path === '/login') navigate('/')
     } else if (path !== '/login') navigate('/login')
-  }, [user, isLoading, navigate])
+  }, [user, authIsLoading, navigate])
 
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<AuthPage />} />
-      </Routes>
+      <main className="todo-container">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<AuthPage />} />
+        </Routes>
+      </main>
       <footer></footer>
     </>
   )

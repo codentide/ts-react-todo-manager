@@ -25,33 +25,11 @@ type TodoIsChecked = Todo['isChecked']
 
 type TodoFilter = (typeof TODO_FILTERS)[keyof typeof TODO_FILTERS]
 
-// Quotes
+// AUTH
 
-interface Quote {
-  author: string | null
-  quote: string | null
+interface LoginData {
+  email: string
+  password: string
 }
 
-interface QuoteAPI {
-  author: string
-  authorSlug: string
-  content: string
-  dateAdded: string
-  dateModified: string
-  length: number
-  tags: string[]
-  _id: string
-}
-
-export {
-  TodoDatabase,
-  Todo,
-  TodoTitle,
-  TodoId,
-  TodoIsChecked,
-  TodoList,
-  TodoFilter,
-  Quote,
-  QuoteAPI,
-  // ApiResponse,
-}
+export { TodoDatabase, Todo, TodoTitle, TodoId, TodoIsChecked, TodoList, TodoFilter, LoginData }

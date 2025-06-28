@@ -1,34 +1,27 @@
-import type { FormEvent } from 'react'
-import { signIn } from '../services/auth.service'
+import { useState } from 'react'
+import { LoginForm } from '../components/auth/LoginForm'
+import { useAuthStore } from '../store/auth.store'
 
 export const AuthPage = () => {
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const form = event.target as HTMLFormElement
-
-    const userData = Object.fromEntries(new FormData(form)) as {
-      email: string
-      password: string
-    }
-
-    const data = await signIn(userData)
-
-    console.log(data)
-  }
+  const authIsLoading = useAuthStore((state) => state.isLoading)
+  const [isLogin, setIsLogin] = useState<boolean>(true)
 
   return (
-    <section>
-      <h1>Login</h1>
-      <br />
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '.8rem' }}>
-        <label htmlFor="email">Email</label>
-        <input type="text" id="email" name="email" />
-        <label htmlFor="password">Password</label>
+    <section className="auth-page">
+      <h3>Hello! Let's get you in</h3>
 
-        <input type="password" id="password" name="password" />
+      <div className="auth-page__switch">
+        <span className={isLogin ? 'active' : ''} onClick={() => setIsLogin(true)}>
+          Login
+        </span>
+        <span className={!isLogin ? 'active' : ''} onClick={() => setIsLogin(false)}>
+          Signup
+        </span>
+      </div>
 
-        <button>Submit</button>
-      </form>
+      {/* Aca abajo usar el router para cambiar entre login y signup */}
+
+      {authIsLoading ? 'CARGANDO' : isLogin ? <LoginForm /> : 'singup'}
     </section>
   )
 }

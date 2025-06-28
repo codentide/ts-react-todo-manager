@@ -13,7 +13,7 @@ export const HomePage = () => {
   }, [getTodos])
 
   return (
-    <main className="todo-container">
+    <>
       <p>{user?.email}</p>
       <br />
       <button onClick={signOut}>Logout</button>
@@ -21,6 +21,6 @@ export const HomePage = () => {
       <TodoCreate />
       <TodoList />
       <TodoControls />
-    </main>
+    </>
   )
 }

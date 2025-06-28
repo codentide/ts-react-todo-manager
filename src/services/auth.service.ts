@@ -1,9 +1,5 @@
 import { supabase } from '../supabase/client'
-
-interface LoginData {
-  email: string
-  password: string
-}
+import type { LoginData } from '../types'
 
 interface AuthResult {
   data: {
@@ -32,9 +28,7 @@ const signUp = async ({ email, password }: LoginData): Promise<AuthResult> => {
       data: null,
       error: {
         message: 'An unexpected error occurred',
-        details:
-          (error as { message: string | null }).message ||
-          'An unexpected error occurred',
+        details: (error as { message: string | null }).message || 'An unexpected error occurred',
       },
     }
   }
@@ -58,9 +52,7 @@ const signIn = async ({ email, password }: LoginData): Promise<AuthResult> => {
       data: null,
       error: {
         message: 'An unexpected error occurred',
-        details:
-          (error as { message: string | null }).message ||
-          'An unexpected error occurred',
+        details: (error as { message: string | null }).message || 'An unexpected error occurred',
       },
     }
   }
