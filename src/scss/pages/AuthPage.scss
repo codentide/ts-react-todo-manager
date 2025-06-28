@@ -1,0 +1,49 @@
+@use '../base/colors' as c;
+
+.auth-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 500;
+
+    color: c.$color-neutral-400;
+  }
+
+  .auth-page__switch {
+    display: flex;
+    align-items: center;
+    gap: 0.28rem;
+
+    width: 280px;
+    padding: 0.2rem;
+    border-radius: 0.4rem;
+
+    background-color: c.$color-neutral-1200;
+
+    span {
+      display: grid;
+      place-items: center;
+      width: 100%;
+
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.02rem;
+
+      padding: 0.4rem 0.8rem;
+      border-radius: 0.28rem;
+
+      color: c.$color-neutral-800;
+
+      cursor: pointer;
+
+      &.active {
+        color: c.$color-neutral-400;
+        background-color: c.$color-neutral-1000;
+      }
+    }
+  }
+}
