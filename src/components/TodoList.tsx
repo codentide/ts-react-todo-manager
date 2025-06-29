@@ -1,5 +1,5 @@
 import { Todoitem } from './TodoItem'
-import type { TodoList as TodoListType } from '../types'
+import type { TodoList as TodoListType } from '../types/auth.types'
 import { useTodos, useTodoStore } from '../store/todo.store'
 import { TODO_FILTERS } from '../constants'
 

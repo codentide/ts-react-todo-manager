@@ -1,4 +1,4 @@
-import type { Todo, TodoDatabase } from '../types'
+import type { Todo, TodoDatabase } from '../types/auth.types'
 
 export const adaptTodo = ({ id, title, is_checked, created_at }: TodoDatabase): Todo => {
   return {

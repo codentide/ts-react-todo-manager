@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { useTodoStore } from '../store/todo.store'
+import { useTodoActions } from '../store/todo.store'
 
 export const TodoCreate: React.FunctionComponent = (): React.JSX.Element => {
-  const createTodo = useTodoStore((state) => state.createTodo)
+  const { createTodo } = useTodoActions()
   const [inputValue, setInputValue] = useState('')
   const [inputError, setInputError] = useState<string | null>(null)
 
@@ -43,10 +43,7 @@ export const TodoCreate: React.FunctionComponent = (): React.JSX.Element => {
   }
 
   return (
-    <form
-      className={`create-form ${inputError ? 'error' : ''}`}
-      onSubmit={handleSubmit}
-    >
+    <form className={`create-form ${inputError ? 'error' : ''}`} onSubmit={handleSubmit}>
       <input
         className="create-form__create-input"
         type="text"

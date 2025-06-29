@@ -1,6 +1,6 @@
 import type { PostgrestError } from '@supabase/supabase-js'
 import { supabase } from '../supabase/client'
-import type { TodoDatabase, TodoId } from '../types'
+import type { TodoDatabase, TodoId } from '../types/auth.types'
 
 interface FailedResult {
   error: PostgrestError

@@ -1,14 +1,12 @@
 import { useEffect } from 'react'
-
-import { useAuthStore } from '../store/auth.store'
 import { supabase } from '../supabase/client'
+import { useAuthActions } from '../store/auth.store'
 
 export const useAuthSync = () => {
-  const { setIsLoading, setUser, setSession } = useAuthStore()
+  const { setIsLoading, setUser, setSession } = useAuthActions()
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log(event)
       switch (event) {
         case 'INITIAL_SESSION':
         case 'SIGNED_IN':

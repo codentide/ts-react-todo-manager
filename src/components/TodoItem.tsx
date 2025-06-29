@@ -1,6 +1,6 @@
-import type { TodoIsChecked, TodoId, TodoTitle } from '../types'
+import type { TodoIsChecked, TodoId, TodoTitle } from '../types/auth.types'
 import { useState } from 'react'
-import { useTodoStore } from '../store/todo.store'
+import { useTodoActions } from '../store/todo.store'
 import { CheckBox } from './CheckBox'
 import CrossSVG from '../assets/svg/small-cross.svg?react'
 
@@ -11,9 +11,7 @@ interface Props {
 }
 
 export const Todoitem: React.FunctionComponent<Props> = ({ id, title, isChecked }) => {
-  const deleteTodo = useTodoStore((state) => state.deleteTodo)
-  const updateTodoTitle = useTodoStore((state) => state.updateTodoTitle)
-  const toggleTodo = useTodoStore((state) => state.toggleTodo)
+  const { deleteTodo, updateTodoTitle, toggleTodo } = useTodoActions()
 
   const [isEditing, setIsEditing] = useState<boolean>(false)
   const [inputValue, setInputValue] = useState<string>(title)

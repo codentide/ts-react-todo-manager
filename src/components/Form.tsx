@@ -1,12 +1,12 @@
 import { type ReactNode } from 'react'
 
-interface Props {
-  onSubmit: (data: object) => void
+interface Props<T extends object> {
+  onSubmit: (data: T) => void
   className?: string
   children: ReactNode | ReactNode[]
 }
 
-export const Form = ({ className, onSubmit, children }: Props) => {
+export const Form = <T extends object>({ className, onSubmit, children }: Props<T>) => {
   const formClassName = `form-component ${className ? className : ''}`
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
@@ -14,7 +14,7 @@ export const Form = ({ className, onSubmit, children }: Props) => {
 
     const form = event.target as HTMLFormElement
     const data = Object.fromEntries(new FormData(form))
-    onSubmit(data)
+    onSubmit(data as T)
   }
 
   return (

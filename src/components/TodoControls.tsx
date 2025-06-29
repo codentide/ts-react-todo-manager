@@ -1,7 +1,7 @@
-import type { TodoFilter } from '../types'
+import type { TodoFilter } from '../types/auth.types'
 import { TODO_FILTERS } from '../constants'
 import { FilterButton } from './FilterButton'
-import { useTodoStore } from '../store/todo.store'
+import { useTodoActions, useTodoStore } from '../store/todo.store'
 
 const TODO_FILTER_BUTTONS = {
   [TODO_FILTERS.ALL]: 'All',
@@ -13,7 +13,7 @@ const TODO_FILTER_BUTTONS = {
 const TODO_FILTER_BUTTON_ARRAY = Object.entries(TODO_FILTER_BUTTONS)
 
 export const TodoControls: React.FunctionComponent = () => {
-  const deleteAllDone = useTodoStore((state) => state.deleteAllDone)
+  const { deleteAllDone } = useTodoActions()
 
   const todos = useTodoStore((state) => state.todos)
   const doneTodoCount: number = todos.filter((todo) => todo.isChecked).length

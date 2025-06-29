@@ -1,14 +1,15 @@
 import { useEffect } from 'react'
-import { Route, Routes, useNavigate } from 'react-router'
-import { AuthPage, HomePage } from './pages'
-import { useAuthStore } from './store/auth.store'
+import { useNavigate } from 'react-router'
+
 import { Header } from './components'
 import { useAuthSync } from './hooks/useAuthSync'
+import { useUser, useUserLoading } from './store/auth.store'
+import { AppRoutes } from './components/AppRoutes'
 
 const App = () => {
   const navigate = useNavigate()
-  const user = useAuthStore((state) => state.user)
-  const authIsLoading = useAuthStore((state) => state.isLoading)
+  const user = useUser()
+  const authIsLoading = useUserLoading()
   useAuthSync()
 
   useEffect(() => {
@@ -17,18 +18,18 @@ const App = () => {
     const path = location.pathname
 
     if (user) {
-      if (user && path === '/login') navigate('/')
-    } else if (path !== '/login') navigate('/login')
+      if (path === '/login') navigate('/')
+      else if (path === '/signup') navigate('/')
+    } else {
+      if (path !== '/login' && path !== '/signup') navigate('/login')
+    }
   }, [user, authIsLoading, navigate])
 
   return (
     <>
       <Header />
       <main className="todo-container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<AuthPage />} />
-        </Routes>
+        <AppRoutes />
       </main>
       <footer></footer>
     </>

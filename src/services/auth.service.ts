@@ -1,59 +1,59 @@
 import { supabase } from '../supabase/client'
-import type { LoginData } from '../types'
-
-interface AuthResult {
-  data: {
-    user: object | null
-    session: object | null
-  } | null
-  error: {
-    message: string
-    details?: string
-  } | null
-}
+import type { AuthResult, AuthError, LoginData, SignupData } from '../types'
 
 //
 
-const signUp = async ({ email, password }: LoginData): Promise<AuthResult> => {
+const signup = async ({ email, password, name }: SignupData): Promise<AuthResult> => {
   try {
     const { data, error } = await supabase.auth.signUp({
       email,
       password,
+      options: {
+        data: { name },
+      },
     })
 
-    return { data, error }
+    if (error) {
+      throw {
+        code: error.status || null,
+        name: error.code,
+        message: error.message || 'Unexpected auth error',
+        originalError: error,
+      } as AuthError
+    }
+
+    // [ ]: Ojo con esta aserción
+    return { data: data as AuthResult['data'], error: null }
   } catch (error: unknown) {
-    console.error(error)
+    console.error('Signup Error: ', error)
     return {
       data: null,
-      error: {
-        message: 'An unexpected error occurred',
-        details: (error as { message: string | null }).message || 'An unexpected error occurred',
-      },
+      error: error as AuthError,
     }
   }
 }
 
 //
 
-const signIn = async ({ email, password }: LoginData): Promise<AuthResult> => {
+const login = async (loginData: LoginData): Promise<AuthResult> => {
   try {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    })
+    const { data, error } = await supabase.auth.signInWithPassword(loginData)
 
-    if (error) return { data: { user: null, session: null }, error: error }
+    if (error) {
+      throw {
+        code: error.status || null,
+        name: error.code,
+        message: error.message || 'Unexpected auth error',
+        originalError: error,
+      } as AuthError
+    }
 
-    return { data: { user: data.user, session: data.session }, error: null }
+    return { data, error: null }
   } catch (error: unknown) {
-    console.error(error)
+    console.error('Login Error:', error)
     return {
       data: null,
-      error: {
-        message: 'An unexpected error occurred',
-        details: (error as { message: string | null }).message || 'An unexpected error occurred',
-      },
+      error: error as AuthError,
     }
   }
 }
@@ -71,4 +71,4 @@ const signOut = async () => {
   return { error: null }
 }
 
-export { signUp, signIn, signOut }
+export { signup, login, signOut }
