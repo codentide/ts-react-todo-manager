@@ -1,7 +1,7 @@
+import type { Todo } from '../../types'
+import { useTodos, useTodoStore } from '../../store'
 import { Todoitem } from './TodoItem'
-import type { TodoList as TodoListType } from '../types/auth.types'
-import { useTodos, useTodoStore } from '../store/todo.store'
-import { TODO_FILTERS } from '../constants'
+import { TODO_FILTERS } from '../../constants'
 
 export const TodoList: React.FunctionComponent = () => {
   const todos = useTodos()
@@ -12,7 +12,7 @@ export const TodoList: React.FunctionComponent = () => {
     return todo
   })
 
-  function renderTodos(todos: TodoListType) {
+  function renderTodos(todos: Todo[]) {
     return todos.map((item) => (
       <li key={item.id}>
         <Todoitem {...item} />

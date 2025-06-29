@@ -1,4 +1,4 @@
-import { useRandomQuote } from '../hooks/useRandomQuote.'
+import { useRandomQuote } from '../../hooks/useRandomQuote'
 
 export const DailyQuote = () => {
   const currentQuote = useRandomQuote()
@@ -10,11 +10,7 @@ export const DailyQuote = () => {
       {currentQuote && (
         <>
           <p>{currentQuote.quote}</p>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href={`https://www.google.com/search?q=${currentQuote.author}`}
-          >
+          <a target="_blank" rel="noopener noreferrer" href={`https://www.google.com/search?q=${currentQuote.author}`}>
             <cite>{currentQuote.author}</cite>
           </a>
         </>

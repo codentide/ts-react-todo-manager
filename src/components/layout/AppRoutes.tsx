@@ -1,7 +1,6 @@
 import { Route, Routes } from 'react-router'
-import { AuthPage, HomePage } from '../pages'
-import { LoginForm } from './auth/LoginForm'
-import { SignupForm } from './auth/SignupForm'
+import { AuthPage, HomePage } from '../../pages'
+import { LoginForm, SignupForm } from '../auth'
 
 export const AppRoutes = () => {
   return (

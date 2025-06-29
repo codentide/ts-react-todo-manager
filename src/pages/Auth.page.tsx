@@ -10,14 +10,14 @@ export const AuthPage = () => {
 
   return (
     <section className="auth-page">
-      <h3>Hello! Let's get you in</h3>
-
-      <div className="auth-page__nav">
-        <NavLink to={'/Login'} children="Login" />
-        <NavLink to={'/signup'} children="Signup" />
+      <div className="form-container">
+        <h3 className="form-container__title">Hello! Let's get you in</h3>
+        <div className="form-container__switch">
+          <NavLink to={'/Login'} children="Login" />
+          <NavLink to={'/signup'} children="Signup" />
+        </div>
+        <Outlet />
       </div>
-
-      <Outlet />
     </section>
   )
 }

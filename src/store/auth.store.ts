@@ -1,16 +1,18 @@
 import type { AuthSession, User } from '@supabase/supabase-js'
 import type { LoginData, SignupData } from '../types'
 import { create } from 'zustand'
-import { login, signup } from '../services'
+import { login, signout, signup } from '../services'
 
 interface Actions {
   setUser: (user: User | null) => void
   setSession: (session: AuthSession | null) => void
   setIsLoading: (value: boolean) => void
+  setAuthError: (value: string) => void
   clearAuthError: () => void
   //
   login: (loginData: LoginData) => Promise<void>
   signup: (signupData: SignupData) => Promise<void>
+  signout: () => Promise<void>
 }
 
 interface State {
@@ -30,7 +32,8 @@ const useAuthStore = create<State>((set) => ({
     setUser: (user) => set({ user }),
     setSession: (session) => set({ session }),
     setIsLoading: (value) => set({ isLoading: value }),
-    // Auth Servicess
+    setAuthError: (value) => set({ error: value }),
+    // Auth Services
     login: async (loginData) => {
       set({ error: null, isLoading: true })
 
@@ -42,6 +45,14 @@ const useAuthStore = create<State>((set) => ({
       set({ error: null, isLoading: true })
 
       const { error } = await signup(signupData)
+      if (error) set({ error: error.message })
+      set({ isLoading: false })
+    },
+    signout: async () => {
+      set({ error: null, isLoading: true })
+
+      const { error } = await signout()
+
       if (error) set({ error: error.message })
       set({ isLoading: false })
     },

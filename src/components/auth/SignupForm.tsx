@@ -1,13 +1,19 @@
-import { useAuthActions, useAuthError, useAuthLoading } from '../../store/auth.store'
 import type { SignupData } from '../../types/auth.types'
-import { Form } from '../Form'
+import { useAuthActions, useAuthError, useAuthLoading } from '../../store/auth.store'
+import { Form, LoadingSpinner } from '../common'
 
 export const SignupForm = () => {
-  const { signup } = useAuthActions()
+  const { signup, setAuthError, clearAuthError } = useAuthActions()
   const error = useAuthError()
   const isLoading = useAuthLoading()
 
   const handleLogin = async (data: SignupData) => {
+    clearAuthError()
+    if (data.password !== data.repeatedPassword) {
+      setAuthError('Both passwords must be the same')
+      return
+    }
+
     signup(data)
   }
 
@@ -29,8 +35,13 @@ export const SignupForm = () => {
           <input type="password" id="password" name="password" />
         </div>
 
+        <div className="form-element">
+          <label htmlFor="password">Repeat password</label>
+          <input type="password" id="repeated-password" name="repeatedPassword" />
+        </div>
+
         <button disabled={isLoading}>
-          <span>{isLoading ? 'Loading...' : 'Continue'}</span>
+          <span>{isLoading ? <LoadingSpinner /> : 'Sign Up'}</span>
         </button>
       </Form>
       {error && <span className="error">{error}</span>}

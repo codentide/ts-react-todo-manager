@@ -7,6 +7,7 @@ export interface LoginData {
 
 export interface SignupData extends LoginData {
   name: string
+  repeatedPassword: string
 }
 
 export interface AuthError {
@@ -17,7 +18,7 @@ export interface AuthError {
 }
 
 export interface AuthResult {
-  data: {
+  data?: {
     user: User
     session: AuthSession
   } | null

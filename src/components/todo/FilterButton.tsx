@@ -1,5 +1,5 @@
-import { useTodoActions, useTodoStore } from '../store/todo.store'
-import type { TodoFilter } from '../types/auth.types'
+import { useTodoActions, useTodoStore } from '../../store/todo.store'
+import type { TodoFilter } from '../../types'
 
 interface Props {
   filterValue: TodoFilter

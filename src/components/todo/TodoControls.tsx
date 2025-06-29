@@ -1,7 +1,7 @@
-import type { TodoFilter } from '../types/auth.types'
-import { TODO_FILTERS } from '../constants'
+import type { TodoFilter } from '../../types'
+import { TODO_FILTERS } from '../../constants'
 import { FilterButton } from './FilterButton'
-import { useTodoActions, useTodoStore } from '../store/todo.store'
+import { useTodoActions, useTodoStore } from '../../store'
 
 const TODO_FILTER_BUTTONS = {
   [TODO_FILTERS.ALL]: 'All',

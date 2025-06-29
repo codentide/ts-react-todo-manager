@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useTodoActions } from '../store/todo.store'
+import { useTodoActions } from '../../store/todo.store'
 
 export const TodoCreate: React.FunctionComponent = (): React.JSX.Element => {
   const { createTodo } = useTodoActions()

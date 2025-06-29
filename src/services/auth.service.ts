@@ -24,7 +24,7 @@ const signup = async ({ email, password, name }: SignupData): Promise<AuthResult
 
     // [ ]: Ojo con esta aserción
     return { data: data as AuthResult['data'], error: null }
-  } catch (error: unknown) {
+  } catch (error) {
     console.error('Signup Error: ', error)
     return {
       data: null,
@@ -49,7 +49,7 @@ const login = async (loginData: LoginData): Promise<AuthResult> => {
     }
 
     return { data, error: null }
-  } catch (error: unknown) {
+  } catch (error) {
     console.error('Login Error:', error)
     return {
       data: null,
@@ -60,15 +60,26 @@ const login = async (loginData: LoginData): Promise<AuthResult> => {
 
 //
 
-const signOut = async () => {
-  const { error } = await supabase.auth.signOut()
+const signout = async (): Promise<AuthResult> => {
+  try {
+    const { error } = await supabase.auth.signOut()
 
-  if (error) {
-    console.log('[LOGOUT] ', error)
-    return { error }
+    if (error) {
+      throw {
+        code: error.status || null,
+        name: error.code,
+        message: error.message || 'Unexpected auth error',
+        originalError: error,
+      } as AuthError
+    }
+
+    return { error: null }
+  } catch (error) {
+    console.error('Signout Error:', error)
+    return {
+      error: error as AuthError,
+    }
   }
-
-  return { error: null }
 }
 
-export { signup, login, signOut }
+export { signup, login, signout }

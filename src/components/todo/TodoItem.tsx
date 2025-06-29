@@ -1,8 +1,8 @@
-import type { TodoIsChecked, TodoId, TodoTitle } from '../types/auth.types'
+import type { TodoId, TodoIsChecked, TodoTitle } from '../../types'
 import { useState } from 'react'
-import { useTodoActions } from '../store/todo.store'
-import { CheckBox } from './CheckBox'
-import CrossSVG from '../assets/svg/small-cross.svg?react'
+import { CheckBox } from '../common/CheckBox'
+import { useTodoActions } from '../../store'
+import CrossSVG from '../../assets/svg/small-cross.svg?react'
 
 interface Props {
   id: TodoId

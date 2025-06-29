@@ -1,6 +1,6 @@
 import type { LoginData } from '../../types/auth.types'
 import { useAuthActions, useAuthError, useAuthLoading } from '../../store/auth.store'
-import { Form } from '../Form'
+import { Form, InputPassword, LoadingSpinner } from '../common'
 
 export const LoginForm = () => {
   const { login } = useAuthActions()
@@ -21,11 +21,12 @@ export const LoginForm = () => {
 
         <div className="form-element">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" />
+          {/* <input type="password" id="password" name="password" /> */}
+          <InputPassword id="password" />
         </div>
 
         <button disabled={isLoading}>
-          <span>{isLoading ? 'Loading...' : 'Continue'}</span>
+          <span>{isLoading ? <LoadingSpinner /> : 'Log In'}</span>
         </button>
       </Form>
 
