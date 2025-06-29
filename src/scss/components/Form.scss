@@ -27,8 +27,8 @@
 
       color: c.$color-neutral-600;
       outline: 1px solid transparent;
-      border: 1px solid c.$color-neutral-1100;
-      background-color: c.$color-neutral-1250;
+      border: 1px solid c.$color-neutral-1200;
+      background-color: hsl(c.$hue-primary, 20%, 9.2%);
 
       transition: all 0.4s ease;
 
@@ -50,8 +50,13 @@
     background-color: c.$color-primary-600;
     color: c.$color-neutral-200;
 
-    margin-top: 1.6rem;
+    margin-top: 0.4rem;
 
     cursor: pointer;
+
+    &:disabled {
+      cursor: auto;
+      filter: saturate(40%) brightness(80%);
+    }
   }
 }

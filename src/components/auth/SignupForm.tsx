@@ -1,10 +1,11 @@
-import { useAuthActions, useAuthError } from '../../store/auth.store'
+import { useAuthActions, useAuthError, useAuthLoading } from '../../store/auth.store'
 import type { SignupData } from '../../types/auth.types'
 import { Form } from '../Form'
 
 export const SignupForm = () => {
-  const error = useAuthError()
   const { signup } = useAuthActions()
+  const error = useAuthError()
+  const isLoading = useAuthLoading()
 
   const handleLogin = async (data: SignupData) => {
     signup(data)
@@ -28,7 +29,9 @@ export const SignupForm = () => {
           <input type="password" id="password" name="password" />
         </div>
 
-        <button>Continue</button>
+        <button disabled={isLoading}>
+          <span>{isLoading ? 'Loading...' : 'Continue'}</span>
+        </button>
       </Form>
       {error && <span className="error">{error}</span>}
     </>

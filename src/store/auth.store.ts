@@ -32,23 +32,25 @@ const useAuthStore = create<State>((set) => ({
     setIsLoading: (value) => set({ isLoading: value }),
     // Auth Servicess
     login: async (loginData) => {
-      set({ error: null })
+      set({ error: null, isLoading: true })
 
       const { error } = await login(loginData)
       if (error) set({ error: error.message })
+      set({ isLoading: false })
     },
     signup: async (signupData: SignupData) => {
-      set({ error: null })
+      set({ error: null, isLoading: true })
 
       const { error } = await signup(signupData)
       if (error) set({ error: error.message })
+      set({ isLoading: false })
     },
     clearAuthError: () => set({ error: null }),
   },
 }))
 
-export const useUser = () => useAuthStore((state) => state.user)
-export const useUserLoading = () => useAuthStore((state) => state.isLoading)
+export const useAuthUser = () => useAuthStore((state) => state.user)
+export const useAuthLoading = () => useAuthStore((state) => state.isLoading)
 export const useAuthError = () => useAuthStore((state) => state.error)
 
 export const useAuthActions = () => useAuthStore((state) => state.actions)

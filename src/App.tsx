@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router'
 
 import { Header } from './components'
 import { useAuthSync } from './hooks/useAuthSync'
-import { useUser, useUserLoading } from './store/auth.store'
+import { useAuthUser, useAuthLoading } from './store/auth.store'
 import { AppRoutes } from './components/AppRoutes'
 
 const App = () => {
   const navigate = useNavigate()
-  const user = useUser()
-  const authIsLoading = useUserLoading()
+  const user = useAuthUser()
+  const authIsLoading = useAuthLoading()
   useAuthSync()
 
   useEffect(() => {

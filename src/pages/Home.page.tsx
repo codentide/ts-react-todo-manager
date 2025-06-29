@@ -2,11 +2,11 @@ import { useEffect } from 'react'
 import { TodoControls, TodoCreate, TodoList } from '../components'
 import { signOut } from '../services/auth.service'
 import { useTodoActions } from '../store/todo.store'
-import { useUser } from '../store/auth.store'
+import { useAuthUser } from '../store/auth.store'
 
 export const HomePage = () => {
   const { getTodos } = useTodoActions()
-  const user = useUser()
+  const user = useAuthUser()
 
   useEffect(() => {
     getTodos()
