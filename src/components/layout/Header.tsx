@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import GithubIcon from '../../assets/svg/github.svg?react'
 import LinkendinIcon from '../../assets/svg/linkedin.svg?react'
 import LogoIcon from '../../assets/svg/logo2.svg?react'
@@ -6,7 +7,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="title-container">
-        <LogoIcon />
+        <Link to={'/'} children={<LogoIcon />} />
         <h1 className="title-container__title">TS/React To-do Manager</h1>
       </div>
       <div className="author-info">

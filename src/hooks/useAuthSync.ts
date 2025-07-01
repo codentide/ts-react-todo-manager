@@ -1,12 +1,15 @@
 import { useEffect } from 'react'
 import { supabase } from '../supabase/client'
 import { useAuthActions } from '../store/auth.store'
+import { useNavigate } from 'react-router'
 
 export const useAuthSync = () => {
-  const { setIsLoading, setUser, setSession } = useAuthActions()
+  const { setIsLoading, setUser, setSession, setIsRecovery } = useAuthActions()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange((event, session) => {
+      console.log(event)
       switch (event) {
         case 'INITIAL_SESSION':
         case 'SIGNED_IN':
@@ -20,6 +23,10 @@ export const useAuthSync = () => {
           setUser(null)
           setIsLoading(false)
           break
+        case 'PASSWORD_RECOVERY':
+          setIsRecovery(true)
+          navigate('/password-reset')
+          break
         default:
           setIsLoading(false)
           break
@@ -27,5 +34,5 @@ export const useAuthSync = () => {
     })
 
     return () => authListener.subscription.unsubscribe()
-  }, [setIsLoading, setSession, setUser])
+  }, [setIsLoading, setSession, setUser, setIsRecovery, navigate])
 }

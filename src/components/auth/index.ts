@@ -1,3 +1,5 @@
 export * from './LoginForm'
 export * from './SignupForm'
 export * from './SignoutButton'
+export * from './RequestPasswordResetForm'
+export * from './PasswordResetForm'
