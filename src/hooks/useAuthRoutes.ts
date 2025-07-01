@@ -15,7 +15,8 @@ export const useAuthRoutes = () => {
     if (user) {
       if (path === '/login' || path === '/signup') navigate('/')
     } else {
-      if (path !== '/login' && path !== '/signup') navigate('/login')
+      // [ ]: Esto no es óptimo
+      if (path !== '/login' && path !== '/signup' && path !== '/forgot-password') navigate('/login')
     }
   }, [user, authIsLoading, navigate])
 }
