@@ -27,6 +27,8 @@ interface State {
   actions: Actions
 }
 
+// [ ]: Implementar custom storage con supabase
+
 export const useTodoStore = create<State>((set, get) => ({
   todos: [],
   filter: 'all',
