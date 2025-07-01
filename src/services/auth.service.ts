@@ -1,6 +1,10 @@
 import { supabase } from '../supabase/client'
 import type { AuthResult, AuthError, LoginData, SignupData } from '../types'
 
+const isProd = import.meta.env.PROD
+const PROD_URL = import.meta.env.VITE_PROD_URL
+const DEV_URL = import.meta.env.VITE_DEV_URL
+
 // SIGNUP
 
 const signup = async ({ email, password, name }: SignupData): Promise<AuthResult> => {
@@ -86,7 +90,9 @@ const signout = async (): Promise<AuthResult> => {
 
 const requestPasswordReset = async (email: string): Promise<AuthResult> => {
   try {
-    const { error } = await supabase.auth.resetPasswordForEmail(email)
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${isProd ? PROD_URL : DEV_URL}/`,
+    })
 
     if (error) {
       throw {

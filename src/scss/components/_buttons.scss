@@ -35,7 +35,7 @@ form > button {
   background-color: c.$color-primary-600;
   color: c.$color-neutral-200;
 
-  margin-top: 0.64rem;
+  margin-top: 0.8rem;
 
   cursor: pointer;
 
@@ -50,6 +50,10 @@ form > button {
     svg * {
       fill: hsl(c.$hue-primary, 36%, 24%) !important;
     }
+  }
+
+  &.successful {
+    background-color: hsl(80, 52%, 32%);
   }
 }
 

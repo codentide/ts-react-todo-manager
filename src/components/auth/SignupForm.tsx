@@ -1,6 +1,6 @@
 import type { SignupData } from '../../types/auth.types'
 import { useAuthActions, useAuthError, useAuthLoading } from '../../store/auth.store'
-import { Form, LoadingSpinner } from '../common'
+import { Form, InputPassword, LoadingSpinner } from '../common'
 import { NavLink } from 'react-router'
 
 export const SignupForm = () => {
@@ -20,7 +20,11 @@ export const SignupForm = () => {
 
   return (
     <>
-      <h3 className="form-container__title">Empieza tu camino</h3>
+      <div className="form-container__heading">
+        <h3>Join Us</h3>
+        <p>Start getting things done.</p>
+      </div>
+
       <div className="form-container__switch">
         <NavLink to={'/Login'} children="Login" />
         <NavLink to={'/signup'} children="Signup" />
@@ -34,21 +38,21 @@ export const SignupForm = () => {
 
         <div className="form-element">
           <label htmlFor="email">Email</label>
-          <input type="text" id="email" name="email" required />
+          <input type="email" id="email" name="email" required />
         </div>
 
         <div className="form-element">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <InputPassword id="password" />
         </div>
 
         <div className="form-element">
           <label htmlFor="password">Repeat password</label>
-          <input type="password" id="password-repeat" name="passwordRepeat" required />
+          <InputPassword id="passwordRepeat" />
         </div>
 
         <button disabled={isLoading}>
-          <span>{isLoading ? <LoadingSpinner /> : 'Sign Up'}</span>
+          <span>{isLoading ? <LoadingSpinner /> : 'Get Started'}</span>
         </button>
       </Form>
       {error && <span className="error">{error}</span>}

@@ -1,7 +1,7 @@
 import type { SignupData } from '../../types'
 import { useNavigate } from 'react-router'
 import { useAuthActions, useAuthError, useIsRecovery, useAuthLoading } from '../../store/auth.store'
-import { Form, LoadingSpinner } from '../common'
+import { Form, InputPassword, LoadingSpinner } from '../common'
 import { useEffect } from 'react'
 
 export const PasswordResetForm = () => {
@@ -34,18 +34,20 @@ export const PasswordResetForm = () => {
 
   return (
     <>
-      <h3 className="form-container__title">Cambio de contraseña</h3>
-      <p className="form-container__description">Coloca tu nueva contraseña</p>
+      <div className="form-container__heading">
+        <h3>Set New Password.</h3>
+        <p>Enter your new password below to secure your account.</p>
+      </div>
 
       <Form className="update-password" onSubmit={handleSubmit}>
         <div className="form-element">
           <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <InputPassword id="password" />
         </div>
 
         <div className="form-element">
           <label htmlFor="password">Repeat password</label>
-          <input type="password" id="repeated-password" name="passwordRepeat" required />
+          <InputPassword id="passwordRepeat" />
         </div>
 
         <button disabled={isLoading}>

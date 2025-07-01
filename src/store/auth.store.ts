@@ -14,7 +14,7 @@ interface Actions {
   login: (loginData: LoginData) => Promise<void>
   signup: (signupData: SignupData) => Promise<void>
   signout: () => Promise<void>
-  requestPasswordReset: (email: string) => Promise<void>
+  requestPasswordReset: (email: string) => Promise<boolean>
   updatePassword: (password: string) => Promise<boolean>
 }
 
@@ -67,8 +67,14 @@ const useAuthStore = create<State>((set) => ({
     requestPasswordReset: async (email: string) => {
       set({ error: null, isLoading: true })
       const { error } = await requestPasswordReset(email)
-      if (error) set({ error: error.message })
+
+      if (error) {
+        set({ error: error.message, isLoading: false })
+        return false
+      }
+
       set({ isLoading: false })
+      return true
     },
     updatePassword: async (password: string): Promise<boolean> => {
       set({ error: null, isLoading: true })
