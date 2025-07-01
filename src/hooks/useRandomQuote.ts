@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import { QUOTE_TAGS } from '../constants'
-import type { Quote, QuoteAPI } from '../types'
+import type { Quote, QuoteAPI } from '../types/auth.types'
 
 const baseUrl = import.meta.env.VITE_QUOTES_BASE_URL
-const quoteUrl = `${baseUrl}/random?limit=1&maxLength=100&tags=${QUOTE_TAGS.join(
-  '|'
-)}`
+const quoteUrl = `${baseUrl}/random?limit=1&maxLength=100&tags=${QUOTE_TAGS.join('|')}`
 
 export const useRandomQuote = (): Quote | null => {
   const [quote, setQuote] = useState<Quote | null>(null)
@@ -15,10 +13,7 @@ export const useRandomQuote = (): Quote | null => {
       try {
         const response = await fetch(url)
 
-        if (!response.ok)
-          throw new Error(
-            `[quote-api] Error HTTP ${response.status} - ${response.statusText}`
-          )
+        if (!response.ok) throw new Error(`[quote-api] Error HTTP ${response.status} - ${response.statusText}`)
 
         const quoteArray: QuoteAPI[] = await response.json()
 

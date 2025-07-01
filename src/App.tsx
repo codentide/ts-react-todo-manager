@@ -1,16 +1,19 @@
-import { TodoControls, TodoList, TodoCreate, Header } from './components'
+import { Header } from './components'
+import { useAuthSync } from './hooks/useAuthSync'
 
-const App = () => (
-  <>
-    <Header />
-    <main className="todo-container">
-      {/* <DailyQuote /> */}
-      <TodoCreate />
-      <TodoList />
-      <TodoControls />
-    </main>
-    <footer></footer>
-  </>
-)
+import { AppRoutes } from './components/layout/AppRoutes'
+import { useAuthRoutes } from './hooks/useAuthRoutes'
+
+const App = () => {
+  useAuthSync()
+  useAuthRoutes()
+
+  return (
+    <>
+      <Header />
+      <AppRoutes />
+    </>
+  )
+}
 
 export default App

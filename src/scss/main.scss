@@ -3,13 +3,24 @@
 @use './base/typography' as *;
 @use './base/media-queries' as m;
 
+// Pages
+@use './pages/home-page' as *;
+@use './pages/auth-page' as *;
+
+// Layouts
+@use './components/header' as *;
+
 // Components
-@use './components/Header.scss' as *;
-@use './components/DailyQuote.scss' as *;
-@use './components/TodoCreate.scss' as *;
-@use './components/TodoList.scss' as *;
-@use './components/TodoItem.scss' as *;
-@use './components/TodoControls.scss' as *;
+@use './components/daily-quote' as *;
+@use './components/todo-create' as *;
+@use './components/todo-list' as *;
+@use './components/todo-item' as *;
+@use './components/todo-controls.scss' as *;
+@use './components/form.scss' as *;
+@use './components/input-password' as *;
+@use './components/check-box' as *;
+@use './components/loading-spinner' as *;
+@use './components/buttons' as *;
 
 // Normalize
 * {
@@ -22,6 +33,9 @@ html,
 body {
   width: 100%;
   min-height: 100dvh;
+
+  color-scheme: dark;
+  accent-color: $color-primary-600;
 }
 
 // Styles
@@ -38,7 +52,7 @@ body {
   font-family: $font-primary;
   line-height: 1;
 
-  overflow-y: scroll;
+  // overflow-y: scroll;
 
   background-color: $color-neutral-1300;
 }
@@ -49,12 +63,7 @@ body::before {
   content: '';
   z-index: -20;
 
-  background: radial-gradient(
-    at left top,
-    $color-neutral-1250,
-    hsl($hue-primary, 32%, 12%),
-    $color-neutral-1300
-  );
+  background: radial-gradient(at left top, $color-neutral-1250, hsl($hue-primary, 32%, 12%), $color-neutral-1300);
 }
 
 body::after {
@@ -80,33 +89,7 @@ body::after {
   max-width: 520px;
   padding: 2.8rem 0;
   margin: 0rem auto;
-
-  filter: drop-shadow(0 0.4rem 0.8rem hsl(0, 0%, 0%, 0.2));
-
-  opacity: 0;
-  animation: appear 1s ease 0.4s forwards;
-
-  @include m.mobile-large {
-    max-width: auto;
-
-    padding: 2.8rem 8%;
-  }
 }
-
-// Error de mensaje "global"
-.error-message {
-  position: absolute;
-  top: -1.6rem;
-  left: 0;
-
-  width: max-content;
-  font-size: 0.8rem;
-  font-weight: 300;
-
-  color: $text-error;
-}
-
-//
 
 @keyframes appear {
   from {
