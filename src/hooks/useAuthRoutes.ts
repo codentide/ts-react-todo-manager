@@ -13,7 +13,7 @@ export const useAuthRoutes = () => {
     const path = location.pathname
 
     if (user) {
-      if (path === '/login' || path === '/signup') navigate('/')
+      if (path === '/login' || path === '/signup' || path === '/forgot-password') navigate('/')
     } else {
       // [ ]: Esto no es óptimo
       if (path !== '/login' && path !== '/signup' && path !== '/forgot-password') navigate('/login')
